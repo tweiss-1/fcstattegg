@@ -170,7 +170,7 @@ nav a:hover, nav a.active {
     background: var(--bg-light);
     border: 2px dashed var(--border-color);
     border-radius: 8px;
-    height: 60px;
+    height: 70px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -178,6 +178,15 @@ nav a:hover, nav a.active {
     font-weight: 600;
     font-size: 0.9rem;
     transition: all 0.2s;
+    overflow: hidden;
+    padding: 5px;
+}
+
+.sponsor-placeholder img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+    display: block;
 }
 
 .sponsor-placeholder:hover {
@@ -342,15 +351,15 @@ footer p {
         <div class="sponsors-sidebar">
             <h3>Unsere Sponsoren</h3>
             <a href="https://www.grawe.at" target="_blank" class="sponsor-placeholder" title="Hauptsponsor GRAWE">
-                <img src="Logo_GRAWE.jpg" alt="GRAWE">
+                <!-- Später Logo einfügen: <img src="grawe_logo.png" alt="GRAWE"> -->
                 <span>Hauptsponsor (GRAWE)</span>
             </a>
             <a href="#" target="_blank" class="sponsor-placeholder" title="Sponsor 2">
-                <img src="raika-logo.jpg" alt="RAIKA">
+                <!-- Später Logo einfügen: <img src="sponsor2_logo.png" alt="Sponsor 2"> -->
                 <span>Sponsor 2</span>
             </a>
             <a href="#" target="_blank" class="sponsor-placeholder" title="Sponsor 3">
-                <img src="stattegg_gemeinde_logo.jpg" alt="gemeinde stattegg">
+                <!-- Später Logo einfügen: <img src="sponsor3_logo.png" alt="Sponsor 3"> -->
                 <span>Sponsor 3</span>
             </a>
             <a href="#" target="_blank" class="sponsor-placeholder" title="Sponsor 4">
