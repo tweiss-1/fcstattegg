@@ -13,6 +13,7 @@
     --text-dark: #212529;
     --text-muted: #6C757D;
     --white: #FFFFFF;
+    --border-color: #CBD5E1;
 }
 
 * {
@@ -167,7 +168,7 @@ nav a:hover, nav a.active {
 
 .sponsor-placeholder {
     background: var(--bg-light);
-    border: 2px dashed #CBD5E1;
+    border: 2px dashed var(--border-color);
     border-radius: 8px;
     height: 60px;
     display: flex;
@@ -198,6 +199,58 @@ nav a:hover, nav a.active {
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 25px;
     margin-bottom: 50px;
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 25px;
+    margin-bottom: 50px;
+}
+
+.team-card {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    text-align: center;
+    border-top: 4px solid var(--primary-green);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.team-avatar {
+    width: 100%;
+    height: 220px;
+    background-color: var(--bg-light);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
+    margin-bottom: 15px;
+    border: 2px dashed var(--border-color);
+    position: relative;
+    overflow: hidden;
+}
+
+.team-avatar svg {
+    width: 80px;
+    height: 80px;
+    opacity: 0.5;
+}
+
+.team-card h4 {
+    font-size: 1.1rem;
+    color: var(--text-dark);
+    margin-bottom: 4px;
+}
+
+.team-card p {
+    color: var(--light-green);
+    font-weight: 600;
+    font-size: 0.95rem;
 }
 
 .card {
@@ -281,9 +334,8 @@ footer p {
     <div class="hero-sponsors-grid">
         <div class="hero">
             <div class="hero-content">
-                <h2>DER VEREIN - Fußball seit 1972</h2>
-                <p>Seit 1972 sind unsere Farben Grün und Weiß. Jedes einzelne Mitglied unserer großen Familie lebt für den Verein. 
-                <br>Egal ob Funktionär, Trainer, Spieler, oder Sponsor - Jeder verkörpert unsere Philosophie!</p>
+                <h2>Gemeinsam stark. Gemeinsam Stattegg.</h2>
+                <p>Willkommen beim offiziellen Webauftritt unseres Fußballclubs.</p>
             </div>
         </div>
         

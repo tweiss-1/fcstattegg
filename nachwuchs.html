@@ -13,6 +13,7 @@
     --text-dark: #212529;
     --text-muted: #6C757D;
     --white: #FFFFFF;
+    --border-color: #CBD5E1;
 }
 
 * {
@@ -65,16 +66,10 @@ header {
     font-weight: 700;
 }
 
-.nav-right {
-    display: flex;
-    align-items: center;
-    gap: 30px;
-}
-
 nav ul {
     display: flex;
     list-style: none;
-    gap: 20px;
+    gap: 25px;
 }
 
 nav a {
@@ -89,50 +84,6 @@ nav a:hover, nav a.active {
     color: var(--primary-green);
 }
 
-.sponsors-box {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    background: var(--bg-light);
-    padding: 8px 15px;
-    border-radius: 8px;
-    border: 1px solid #E2E8F0;
-}
-
-.sponsors-box span {
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    color: var(--text-muted);
-    font-weight: 700;
-}
-
-.sponsor-list {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-}
-
-.sponsor-tag {
-    font-size: 0.75rem;
-    font-weight: 600;
-    background: var(--white);
-    padding: 2px 8px;
-    border-radius: 4px;
-    color: var(--primary-green);
-    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
-    text-align: center;
-}
-
-.hero {
-    position: relative;
-    height: 400px;
-    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5)), url('image_b45002.jpg') center/cover no-repeat;
-    display: flex;
-    align-items: flex-end;
-    color: var(--white);
-}
-
 .page-header {
     background-color: var(--primary-green);
     color: var(--white);
@@ -145,23 +96,94 @@ nav a:hover, nav a.active {
     margin-bottom: 8px;
 }
 
-.hero-content {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 40px 20px;
-    width: 100%;
-}
-
-.hero-content h2 {
-    font-size: 2.5rem;
-    margin-bottom: 10px;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
-}
-
 .container {
     max-width: 1200px;
     margin: 40px auto;
     padding: 0 20px;
+}
+
+/* Hero & Sponsoren Layout für Startseite */
+.hero-sponsors-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 25px;
+    max-width: 1200px;
+    margin: 40px auto 20px auto;
+    padding: 0 20px;
+}
+
+@media (max-width: 900px) {
+    .hero-sponsors-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.hero {
+    position: relative;
+    height: 420px;
+    border-radius: 12px;
+    overflow: hidden;
+    background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.6)), url('Meistermannschaft.png') center/cover no-repeat;
+    display: flex;
+    align-items: flex-end;
+    color: var(--white);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+
+.hero-content {
+    padding: 30px;
+    width: 100%;
+}
+
+.hero-content h2 {
+    font-size: 2.2rem;
+    margin-bottom: 8px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.hero-content p {
+    font-size: 1.1rem;
+    opacity: 0.95;
+}
+
+/* Rechte Sponsorenbox mit 5 Platzhaltern */
+.sponsors-sidebar {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    border-top: 4px solid var(--primary-green);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.sponsors-sidebar h3 {
+    font-size: 1.1rem;
+    color: var(--text-dark);
+    margin-bottom: 4px;
+    border-bottom: 2px solid #E2E8F0;
+    padding-bottom: 8px;
+}
+
+.sponsor-placeholder {
+    background: var(--bg-light);
+    border: 2px dashed var(--border-color);
+    border-radius: 8px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.2s;
+}
+
+.sponsor-placeholder:hover {
+    border-color: var(--primary-green);
+    color: var(--primary-green);
+    background: #F1F5F9;
 }
 
 .section-title {
@@ -177,6 +199,58 @@ nav a:hover, nav a.active {
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 25px;
     margin-bottom: 50px;
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 25px;
+    margin-bottom: 50px;
+}
+
+.team-card {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    text-align: center;
+    border-top: 4px solid var(--primary-green);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.team-avatar {
+    width: 100%;
+    height: 220px;
+    background-color: var(--bg-light);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
+    margin-bottom: 15px;
+    border: 2px dashed var(--border-color);
+    position: relative;
+    overflow: hidden;
+}
+
+.team-avatar svg {
+    width: 80px;
+    height: 80px;
+    opacity: 0.5;
+}
+
+.team-card h4 {
+    font-size: 1.1rem;
+    color: var(--text-dark);
+    margin-bottom: 4px;
+}
+
+.team-card p {
+    color: var(--light-green);
+    font-weight: 600;
+    font-size: 0.95rem;
 }
 
 .card {
@@ -241,23 +315,19 @@ footer p {
     <header>
         <div class="nav-container">
             <div class="logo-area">
-                <img src="image_b44c9e.png" alt="FC Stattegg Logo">
+                <img src="Logo.png" alt="FC Stattegg Logo">
                 <h1>FC STATTEGG</h1>
             </div>
-            <div class="nav-right">
-                <nav>
-                    <ul>
-                        <li><a href="index.html" >Homepage</a></li>\n<li><a href="team.html" >Team</a></li>\n<li><a href="km1.html" >KM I</a></li>\n<li><a href="km2.html" >KM II</a></li>\n<li><a href="nachwuchs.html" class="active">Nachwuchs</a></li>\n<li><a href="downloads.html" >Downloads</a></li>\n
-                    </ul>
-                </nav>
-                <div class="sponsors-box">
-                    <span>Partner</span>
-                    <div class="sponsor-list">
-                        <div class="sponsor-tag">GRAWE</div>
-                        <div class="sponsor-tag">Gemeinde Stattegg</div>
-                    </div>
-                </div>
-            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html" >Homepage</a></li>
+                        <li><a href="team.html" >Team</a></li>
+                        <li><a href="km1.html" >KM I</a></li>
+                        <li><a href="km2.html" >KM II</a></li>
+                        <li><a href="nachwuchs.html" class="active">Nachwuchs</a></li>
+                        <li><a href="downloads.html" >Downloads</a></li>
+                </ul>
+            </nav>
         </div>
     </header>
 
