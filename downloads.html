@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FC Stattegg - Downloads</title>
+    <style>
+:root {
+    --primary-green: #3B7A57;
+    --light-green: #529B73;
+    --accent-green: #2B5A3F;
+    --bg-light: #F8F9FA;
+    --text-dark: #212529;
+    --text-muted: #6C757D;
+    --white: #FFFFFF;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    line-height: 1.6;
+}
+
+header {
+    background-color: var(--white);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.logo-area {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo-area img {
+    height: 50px;
+    width: 50px;
+    object-fit: contain;
+}
+
+.logo-area h1 {
+    font-size: 1.4rem;
+    color: var(--primary-green);
+    font-weight: 700;
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--text-dark);
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: color 0.2s;
+}
+
+nav a:hover, nav a.active {
+    color: var(--primary-green);
+}
+
+.sponsors-box {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--bg-light);
+    padding: 8px 15px;
+    border-radius: 8px;
+    border: 1px solid #E2E8F0;
+}
+
+.sponsors-box span {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-muted);
+    font-weight: 700;
+}
+
+.sponsor-list {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.sponsor-tag {
+    font-size: 0.75rem;
+    font-weight: 600;
+    background: var(--white);
+    padding: 2px 8px;
+    border-radius: 4px;
+    color: var(--primary-green);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    text-align: center;
+}
+
+.hero {
+    position: relative;
+    height: 400px;
+    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5)), url('image_b45002.jpg') center/cover no-repeat;
+    display: flex;
+    align-items: flex-end;
+    color: var(--white);
+}
+
+.page-header {
+    background-color: var(--primary-green);
+    color: var(--white);
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.page-header h2 {
+    font-size: 2.2rem;
+    margin-bottom: 8px;
+}
+
+.hero-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    width: 100%;
+}
+
+.hero-content h2 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.section-title {
+    font-size: 1.8rem;
+    color: var(--primary-green);
+    margin-bottom: 20px;
+    border-bottom: 2px solid var(--primary-green);
+    padding-bottom: 8px;
+}
+
+.grid-3 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    margin-bottom: 50px;
+}
+
+.card {
+    background: var(--white);
+    border-radius: 8px;
+    padding: 25px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    border-top: 4px solid var(--primary-green);
+}
+
+.card h3 {
+    margin-bottom: 12px;
+    color: var(--text-dark);
+}
+
+.card p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--white);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    margin-bottom: 30px;
+}
+
+th, td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #E2E8F0;
+}
+
+th {
+    background-color: var(--primary-green);
+    color: var(--white);
+    font-weight: 600;
+}
+
+tr:hover {
+    background-color: #F1F5F9;
+}
+
+footer {
+    background-color: var(--accent-green);
+    color: var(--white);
+    text-align: center;
+    padding: 30px 20px;
+    margin-top: 60px;
+    font-size: 0.9rem;
+}
+
+footer p {
+    margin-bottom: 5px;
+}
+</style>
+</head>
+<body>
+    <header>
+        <div class="nav-container">
+            <div class="logo-area">
+                <img src="image_b44c9e.png" alt="FC Stattegg Logo">
+                <h1>FC STATTEGG</h1>
+            </div>
+            <div class="nav-right">
+                <nav>
+                    <ul>
+                        <li><a href="index.html" >Homepage</a></li>\n<li><a href="team.html" >Team</a></li>\n<li><a href="km1.html" >KM I</a></li>\n<li><a href="km2.html" >KM II</a></li>\n<li><a href="nachwuchs.html" >Nachwuchs</a></li>\n<li><a href="downloads.html" class="active">Downloads</a></li>\n
+                    </ul>
+                </nav>
+                <div class="sponsors-box">
+                    <span>Partner</span>
+                    <div class="sponsor-list">
+                        <div class="sponsor-tag">GRAWE</div>
+                        <div class="sponsor-tag">Gemeinde Stattegg</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="page-header">
+        <h2>Downloads</h2>
+        <p>Formulare, Statuten und Dokumente des Vereins</p>
+    </div>
+
+    <div class="container">
+        <h3 class="section-title">Verfügbare Dokumente</h3>
+        <table>
+            <tr>
+                <th>Dokumentenname</th>
+                <th>Beschreibung</th>
+                <th>Format</th>
+                <th>Aktion</th>
+            </tr>
+            <tr>
+                <td>Beitrittserklärung / Anmeldung</td>
+                <td>Mitgliedsantrag für Spieler und Unterstützer</td>
+                <td>PDF</td>
+                <td><a href="#" style="color: var(--primary-green); font-weight: 600; text-decoration: none;">Herunterladen</a></td>
+            </tr>
+            <tr>
+                <td>Vereinsstatuten</td>
+                <td>Offizielle Statuten des FC Stattegg</td>
+                <td>PDF</td>
+                <td><a href="#" style="color: var(--primary-green); font-weight: 600; text-decoration: none;">Herunterladen</a></td>
+            </tr>
+            <tr>
+                <td>Trainingsplan Herbst 2026</td>
+                <td>Übersicht aller Trainingszeiten nach Mannschaften</td>
+                <td>PDF</td>
+                <td><a href="#" style="color: var(--primary-green); font-weight: 600; text-decoration: none;">Herunterladen</a></td>
+            </tr>
+            <tr>
+                <td>Vereinslogo Paket</td>
+                <td>Offizielles Vereinslogo in hoher Auflösung</td>
+                <td>ZIP</td>
+                <td><a href="#" style="color: var(--primary-green); font-weight: 600; text-decoration: none;">Herunterladen</a></td>
+            </tr>
+        </table>
+    </div>
+
+    <footer>
+        <p>&copy; FC Stattegg - am Wiesengrund 6 - 8046 Graz Stattegg</p>
+        <p style="font-size: 0.8rem; opacity: 0.8; margin-top: 5px;">Offizielle Vereinshomepage</p>
+    </footer>
+</body>
+</html>
