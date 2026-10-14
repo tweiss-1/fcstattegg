@@ -147,52 +147,31 @@ nav a:hover, nav a.active {
 }
 
 /* Rechte Sponsorenbox mit 5 Platzhaltern */
-.sponsors-sidebar {
+.sidebar-sponsor {
     background: var(--white);
-    border-radius: 12px;
-    padding: 20px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-    border-top: 4px solid var(--primary-green);
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-
-.sponsors-sidebar h3 {
-    font-size: 1.1rem;
-    color: var(--text-dark);
-    margin-bottom: 4px;
-    border-bottom: 2px solid #E2E8F0;
-    padding-bottom: 8px;
-}
-
-.sponsor-placeholder {
-    background: var(--bg-light);
-    border: 2px dashed var(--border-color);
     border-radius: 8px;
     height: 70px;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--text-muted);
-    font-weight: 600;
-    font-size: 0.9rem;
-    transition: all 0.2s;
-    overflow: hidden;
-    padding: 5px;
+    padding: 10px 15px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+    transition: transform 0.2s, box-shadow 0.2s;
+    text-decoration: none;
+    border: 1px solid #eaeaea;
 }
 
-.sponsor-placeholder img {
+.sidebar-sponsor:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    border-color: var(--primary-green);
+}
+
+.sidebar-sponsor img {
     max-height: 100%;
     max-width: 100%;
     object-fit: contain;
     display: block;
-}
-
-.sponsor-placeholder:hover {
-    border-color: var(--primary-green);
-    color: var(--primary-green);
-    background: #F1F5F9;
 }
 
 .section-title {
@@ -492,20 +471,21 @@ footer p {
             </div>
         </div>
         
-        <div class="sponsors-sidebar">
-            <h3>Unsere Sponsoren</h3>
-            <a href="https://www.grawe.at" target="_blank" class="sponsor-placeholder" title="Hauptsponsor GRAWE">
-                <img src= "images/Logo_GRAWE.jpg" alt="GRAWE">
-                
-            </a>
-            <a href="#" target="_blank" class="sponsor-placeholder" title="Sponsor 2">
-                <img src="images/raika-logo.jpg" alt="Sponsor 2"> 
-                
-            </a>
-            <a href="#" target="_blank" class="sponsor-placeholder" title="Sponsor 3">
-                <img src="images/stattegg_gemeinde_logo.jpg" alt="Sponsor 3">
-            </a>    
-        </div>
+    <div class="sponsors-sidebar">
+    <h3>Unsere Sponsoren</h3>
+    
+    <a href="sponsoren.html" class="sidebar-sponsor" title="GRAWE">
+        <img src="images/Logo_GRAWE.jpg" alt="Grawe">
+    </a>
+    
+    <a href="sponsoren.html" class="sidebar-sponsor" title="Raiffeisen Meine Bank">
+        <img src="images/raika-logo.jpg" alt="Meine Raiffeisenbank">
+    </a>
+    
+    <a href="sponsoren.html" class="sidebar-sponsor" title="Unser Stattegg">
+        <img src="images/stattegg_gemeinde_logo.jpg" alt="Unser Stattegg">
+    </a>
+
     </div>
 
     <div class="container">
