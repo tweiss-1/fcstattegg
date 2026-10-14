@@ -3,187 +3,162 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FC Stattegg - Team & Funktionäre</title>
+    <title>Sponsoren & Partner | FC Stattegg</title>
     <style>
-:root {
-    --primary-green: #3B7A57;
-    --light-green: #529B73;
-    --accent-green: #2B5A3F;
-    --bg-light: #F8F9FA;
-    --text-dark: #212529;
-    --text-muted: #6C757D;
-    --white: #FFFFFF;
-    --border-color: #CBD5E1;
-}
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-}
-body {
-    background-color: var(--bg-light);
-    color: var(--text-dark);
-    line-height: 1.6;
-}
-header {
-    background-color: var(--white);
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-}
-.nav-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 20px;
-    flex-wrap: wrap;
-    gap: 15px;
-}
-.logo-area {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
-.logo-area img {
-    height: 50px;
-    width: 50px;
-    object-fit: contain;
-}
-.logo-area h1 {
-    font-size: 1.4rem;
-    color: var(--primary-green);
-    font-weight: 700;
-}
-nav ul {
-    display: flex;
-    list-style: none;
-    gap: 25px;
-}
-nav a {
-    text-decoration: none;
-    color: var(--text-dark);
-    font-weight: 600;
-    font-size: 0.95rem;
-    transition: color 0.2s;
-}
-nav a:hover, nav a.active {
-    color: var(--primary-green);
-}
-.page-header {
-    background-color: var(--primary-green);
-    color: var(--white);
-    padding: 40px 20px;
-    text-align: center;
-}
-.page-header h2 {
-    font-size: 2.2rem;
-    margin-bottom: 8px;
-}
-.container {
-    max-width: 1200px;
-    margin: 40px auto;
-    padding: 0 20px;
-}
-.section-title {
-    font-size: 1.8rem;
-    color: var(--primary-green);
-    margin-bottom: 20px;
-    border-bottom: 2px solid var(--primary-green);
-    padding-bottom: 8px;
-}
-.team-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 25px;
-    margin-bottom: 50px;
-}
-.team-card {
-    background: var(--white);
-    border-radius: 12px;
-    padding: 20px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-    text-align: center;
-    border-top: 4px solid var(--primary-green);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-.team-card h4 {
-    font-size: 1.1rem;
-    color: var(--text-dark);
-    margin-bottom: 4px;
-}
-.team-card p {
-    color: var(--light-green);
-    font-weight: 600;
-    font-size: 0.95rem;
-}
-.card {
-    background: var(--white);
-    border-radius: 8px;
-    padding: 25px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-    border-top: 4px solid var(--primary-green);
-}
-footer {
-    background-color: var(--accent-green);
-    color: var(--white);
-    text-align: center;
-    padding: 30px 20px;
-    margin-top: 60px;
-    font-size: 0.9rem;
-}
-footer p {
-    margin-bottom: 5px;
-}
+        :root {
+            --primary-green: #2e7d32;
+            --dark-green: #1b5e20;
+            --light-green: #e8f5e9;
+            --accent-green: #4caf50;
+            --text-dark: #333333;
+            --bg-light: #f4f6f8;
+            --white: #ffffff;
+            --border-color: #dcdcdc;
+        }
 
-    /* Team Avatar & Hover Overlay Styles */
-    .team-avatar {
-        width: 100%;
-        height: 220px;
-        background-color: var(--bg-light);
-        border-radius: 8px;
-        position: relative;
-        overflow: hidden;
-        margin-bottom: 15px;
-        border: 2px dashed var(--border-color);
-    }
-    .team-overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(43, 90, 63, 0.92);
-        color: var(--white);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        opacity: 0;
-        transition: opacity 0.3s ease-in-out;
-        padding: 20px;
-        text-align: center;
-    }
-    .team-avatar:hover .team-overlay {
-        opacity: 1;
-    }
-    .contact-info p {
-        margin: 8px 0;
-        font-size: 0.95rem;
-        color: var(--white) !important;
-    }
-    .contact-info a {
-        color: var(--white);
-        text-decoration: underline;
-    }
-    .contact-info a:hover {
-        color: #E2E8F0;
-    }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
 
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        header {
+            background: var(--dark-green);
+            color: var(--white);
+            padding: 20px 0;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--white);
+            text-decoration: none;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        nav ul li a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        nav ul li a:hover, nav ul li a.active {
+            color: var(--accent-green);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        /* Intro Box */
+        .intro-card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border-left: 5px solid var(--primary-green);
+            margin-bottom: 30px;
+        }
+
+        .intro-card h1 {
+            color: var(--primary-green);
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .intro-card p {
+            color: #555;
+            font-size: 1.05rem;
+        }
+
+        /* Sponsoren Raster */
+        .sponsor-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 25px;
+        }
+
+        .sponsor-card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            border-top: 4px solid transparent;
+        }
+
+        .sponsor-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            border-top-color: var(--primary-green);
+        }
+
+        .sponsor-logo-container {
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+
+        .sponsor-logo-container img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        .sponsor-info h3 {
+            color: var(--text-dark);
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #777;
+            font-size: 0.9rem;
+            margin-top: 50px;
+            border-top: 1px solid #eaeaea;
+        }
+
+        @media (max-width: 600px) {
+            .intro-card {
+                padding: 20px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -193,102 +168,93 @@ footer p {
             <a href="index.html" class="logo">FC Stattegg</a>
             <nav>
                 <ul>
-                    <li><a href="index.html" class="active">Homepage</a></li>
-                        <li><a href="team.html" >Team</a></li>
-                        <li><a href="km1.html" >KM I</a></li>
-                        <li><a href="km2.html" >KM II</a></li>
-                        <li><a href="nachwuchs.html" >Nachwuchs</a></li>
-                        <li><a href="downloads.html" >Downloads</a></li>
-                        <li><a href="sponsoren.html" class="active">Sponsoren</a></li>
+                    <li><a href="index.html">Startseite</a></li>
+                    <li><a href="team.html">Team</a></li>
+                    <li><a href="downloads.html">Downloads</a></li>
+                    <li><a href="bestellung.html">Bestellung</a></li>
+                    <li><a href="sponsoren.html" class="active">Sponsoren</a></li>
                 </ul>
             </nav>
         </div>
     </header>
-    <div class="page-header">
-        <h2>Sponsoren</h2>
-        <p>Die Sponsoren und Gönner des FC Stattegg</p>
-    </div>
+
     <div class="container">
         <!-- Einleitender Text -->
         <div class="intro-card">
             <h1>Unsere Sponsoren & Partner</h1>
-            <p>Fußball bietet nicht nur Freude an Bewegung, Spiel und sportlicher Rivalität, sondern beinhaltet sehr wohl auch mehrere pädagogische Komponenten, wie Kameradschaft, Gruppendynamik, Auseinandersetzung mit Sieg und Niederlage.
-                Dieser Sport übt besonders auf Jugendliche eine Leitbildfunktion aus und nimmt somit Einfluss auf die Persönlichkeitsbildung.
-                Fußball bedeutet sinnvolle Freizeitgestaltung und erfordert einen gesunden Lebensstil.
-                Darüber hinaus zählt Fußball zu den beliebtesten Sportarten und erreicht wie kaum eine andere Sportart regional, national als auch international ein breit gefächertes Publikum.
-                Der FC Stattegg betreut nun fast 300 Kinder in unterschiedlichen Altersklassen. 18 Trainer sowie Vorstand und Jugendleitung sind Woche für Woche bemüht, Kindern und Jugendlichen die Freude am Fußball zu vermitteln.</p>
+            <p>Ein herzliches Dankeschön an all unsere treuen Sponsoren, Gönner und Partner! Durch Ihre wertvolle Unterstützung ermöglichen Sie unseren Spielern, dem Trainerteam und insbesondere unserer starken Jugendarbeit am Sportplatz am Wiesengrund optimale Bedingungen.</p>
         </div>
 
-        <!-- Sponsoren Raster (Alle 20 Sponsoren) -->
+        <!-- Sponsoren Raster mit angepassten Pfaden -->
         <div class="sponsor-grid">
             
             <div class="sponsor-card">
-                <div class="sponsor-logo-container"><img src="images/unser_stattegg.png" alt="Unser Stattegg"></div>
+                <div class="sponsor-logo-container"><img src="images/sponsoren/unser_stattegg.png" alt="Unser Stattegg"></div>
                 <div class="sponsor-info"><h3>Unser Stattegg</h3></div>
             </div>
 
             <div class="sponsor-card">
-                <div class="sponsor-logo-container"><img src="images/sponsoren/raika.png" alt="Meine Raiffeisenbank"></div>
+                <div class="sponsor-logo-container"><img src="images/sponsoren/raiffeisen.png" alt="Meine Raiffeisenbank"></div>
                 <div class="sponsor-info"><h3>Meine Raiffeisenbank</h3></div>
             </div>
 
             <div class="sponsor-card">
-                <div class="sponsor-logo-container"><img src="images/grawe.png" alt="Grawe"></div>
+                <div class="sponsor-logo-container"><img src="images/sponsoren/grawe.png" alt="Grawe"></div>
                 <div class="sponsor-info"><h3>Grawe</h3></div>
             </div>
 
             <div class="sponsor-card">
                 <div class="sponsor-logo-container"><img src="images/sponsoren/seidler.png" alt="Seidler"></div>
-                <div class="sponsor-info"><h3>Metallbau Seidler</h3></div>
+                <div class="sponsor-info"><h3>Seidler</h3></div>
             </div>
 
             <div class="sponsor-card">
-                <div class="sponsor-logo-container"><img src="images/sport_union.png" alt="Sport Union"></div>
+                <div class="sponsor-logo-container"><img src="images/sponsoren/sport_union.png" alt="Sport Union"></div>
                 <div class="sponsor-info"><h3>Sport Union</h3></div>
             </div>
 
             <div class="sponsor-card">
-                <div class="sponsor-logo-container"><img src="images/achleitner.png" alt="Achleitner"></div>
+                <div class="sponsor-logo-container"><img src="images/sponsoren/achleitner.png" alt="Achleitner"></div>
                 <div class="sponsor-info"><h3>Achleitner</h3></div>
             </div>
 
             <div class="sponsor-card">
-                <div class="sponsor-logo-container"><img src="images/dworschak.png" alt="Dworschak"></div>
+                <div class="sponsor-logo-container"><img src="images/sponsoren/dworschak.png" alt="Dworschak"></div>
                 <div class="sponsor-info"><h3>Dworschak</h3></div>
             </div>
 
             <div class="sponsor-card">
-                <div class="sponsor-logo-container"><img src="images/ledolter.png" alt="Ledolter"></div>
+                <div class="sponsor-logo-container"><img src="images/sponsoren/ledolter.png" alt="Ledolter"></div>
                 <div class="sponsor-info"><h3>Ledolter</h3></div>
             </div>
 
             <div class="sponsor-card">
-                <div class="sponsor-logo-container"><img src="images/pirelli.png" alt="Pirelli"></div>
+                <div class="sponsor-logo-container"><img src="images/sponsoren/pirelli.png" alt="Pirelli"></div>
                 <div class="sponsor-info"><h3>Pirelli</h3></div>
             </div>
 
             <div class="sponsor-card">
-                <div class="sponsor-logo-container"><img src="images/strauss.png" alt="Strauss"></div>
+                <div class="sponsor-logo-container"><img src="images/sponsoren/strauss.png" alt="Strauss"></div>
                 <div class="sponsor-info"><h3>Strauss</h3></div>
             </div>
 
             <div class="sponsor-card">
-                <div class="sponsor-logo-container"><img src="images/zoetsch.png" alt="Zötsch"></div>
+                <div class="sponsor-logo-container"><img src="images/sponsoren/zoetsch.png" alt="Zötsch"></div>
                 <div class="sponsor-info"><h3>Zötsch</h3></div>
             </div>
 
             <div class="sponsor-card">
-                <div class="sponsor-logo-container"><img src="images/kawea.png" alt="Kawea"></div>
+                <div class="sponsor-logo-container"><img src="images/sponsoren/kawea.png" alt="Kawea"></div>
                 <div class="sponsor-info"><h3>Kawea</h3></div>
             </div>
 
             <div class="sponsor-card">
-                <div class="sponsor-logo-container"><img src="images/il_pelo.png" alt="Il Pelo"></div>
+                <div class="sponsor-logo-container"><img src="images/sponsoren/il_pelo.png" alt="Il Pelo"></div>
                 <div class="sponsor-info"><h3>Il Pelo</h3></div>
             </div>
 
             <div class="sponsor-card">
-                <div class="sponsor-logo-container"><img src="images/betawellness.png" alt="BetaWellness"></div>
+                <div class="sponsor-logo-container"><img src="images/sponsoren/betawellness.png" alt="BetaWellness"></div>
                 <div class="sponsor-info"><h3>BetaWellness</h3></div>
             </div>
 
@@ -298,17 +264,17 @@ footer p {
             </div>
 
             <div class="sponsor-card">
-                <div class="sponsor-logo-container"><img src="images/kusterer.png" alt="Kusterer"></div>
+                <div class="sponsor-logo-container"><img src="images/sponsoren/kusterer.png" alt="Kusterer"></div>
                 <div class="sponsor-info"><h3>Kusterer</h3></div>
             </div>
 
             <div class="sponsor-card">
-                <div class="sponsor-logo-container"><img src="images/flowtec.png" alt="Flowtec"></div>
+                <div class="sponsor-logo-container"><img src="images/sponsoren/flowtec.png" alt="Flowtec"></div>
                 <div class="sponsor-info"><h3>Flowtec</h3></div>
             </div>
 
             <div class="sponsor-card">
-                <div class="sponsor-logo-container"><img src="images/baron_filou.png" alt="Baron Filou"></div>
+                <div class="sponsor-logo-container"><img src="images/sponsoren/baron_filou.png" alt="Baron Filou"></div>
                 <div class="sponsor-info"><h3>Baron Filou</h3></div>
             </div>
 
@@ -318,7 +284,7 @@ footer p {
             </div>
 
             <div class="sponsor-card">
-                <div class="sponsor-logo-container"><img src="images/leihmax.png" alt="Leihmax"></div>
+                <div class="sponsor-logo-container"><img src="images/sponsoren/leihmax.png" alt="Leihmax"></div>
                 <div class="sponsor-info"><h3>Leihmax</h3></div>
             </div>
 
