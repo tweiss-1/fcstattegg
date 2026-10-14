@@ -15,20 +15,17 @@
     --white: #FFFFFF;
     --border-color: #CBD5E1;
 }
-
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
-
 body {
     background-color: var(--bg-light);
     color: var(--text-dark);
     line-height: 1.6;
 }
-
 header {
     background-color: var(--white);
     box-shadow: 0 2px 10px rgba(0,0,0,0.05);
@@ -36,7 +33,6 @@ header {
     top: 0;
     z-index: 1000;
 }
-
 .nav-container {
     max-width: 1200px;
     margin: 0 auto;
@@ -47,31 +43,26 @@ header {
     flex-wrap: wrap;
     gap: 15px;
 }
-
 .logo-area {
     display: flex;
     align-items: center;
     gap: 15px;
 }
-
 .logo-area img {
     height: 50px;
     width: 50px;
     object-fit: contain;
 }
-
 .logo-area h1 {
     font-size: 1.4rem;
     color: var(--primary-green);
     font-weight: 700;
 }
-
 nav ul {
     display: flex;
     list-style: none;
     gap: 25px;
 }
-
 nav a {
     text-decoration: none;
     color: var(--text-dark);
@@ -79,113 +70,24 @@ nav a {
     font-size: 0.95rem;
     transition: color 0.2s;
 }
-
 nav a:hover, nav a.active {
     color: var(--primary-green);
 }
-
 .page-header {
     background-color: var(--primary-green);
     color: var(--white);
     padding: 40px 20px;
     text-align: center;
 }
-
 .page-header h2 {
     font-size: 2.2rem;
     margin-bottom: 8px;
 }
-
 .container {
     max-width: 1200px;
     margin: 40px auto;
     padding: 0 20px;
 }
-
-/* Hero & Sponsoren Layout für Startseite */
-.hero-sponsors-grid {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 25px;
-    max-width: 1200px;
-    margin: 40px auto 20px auto;
-    padding: 0 20px;
-}
-
-@media (max-width: 900px) {
-    .hero-sponsors-grid {
-        grid-template-columns: 1fr;
-    }
-}
-
-.hero {
-    position: relative;
-    height: 420px;
-    border-radius: 12px;
-    overflow: hidden;
-    background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.6)), url('Meistermannschaft.png') center/cover no-repeat;
-    display: flex;
-    align-items: flex-end;
-    color: var(--white);
-    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-}
-
-.hero-content {
-    padding: 30px;
-    width: 100%;
-}
-
-.hero-content h2 {
-    font-size: 2.2rem;
-    margin-bottom: 8px;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
-}
-
-.hero-content p {
-    font-size: 1.1rem;
-    opacity: 0.95;
-}
-
-/* Rechte Sponsorenbox mit 5 Platzhaltern */
-.sponsors-sidebar {
-    background: var(--white);
-    border-radius: 12px;
-    padding: 20px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-    border-top: 4px solid var(--primary-green);
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-
-.sponsors-sidebar h3 {
-    font-size: 1.1rem;
-    color: var(--text-dark);
-    margin-bottom: 4px;
-    border-bottom: 2px solid #E2E8F0;
-    padding-bottom: 8px;
-}
-
-.sponsor-placeholder {
-    background: var(--bg-light);
-    border: 2px dashed var(--border-color);
-    border-radius: 8px;
-    height: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--text-muted);
-    font-weight: 600;
-    font-size: 0.9rem;
-    transition: all 0.2s;
-}
-
-.sponsor-placeholder:hover {
-    border-color: var(--primary-green);
-    color: var(--primary-green);
-    background: #F1F5F9;
-}
-
 .section-title {
     font-size: 1.8rem;
     color: var(--primary-green);
@@ -193,21 +95,12 @@ nav a:hover, nav a.active {
     border-bottom: 2px solid var(--primary-green);
     padding-bottom: 8px;
 }
-
-.grid-3 {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 25px;
-    margin-bottom: 50px;
-}
-
 .team-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 25px;
     margin-bottom: 50px;
 }
-
 .team-card {
     background: var(--white);
     border-radius: 12px;
@@ -219,40 +112,16 @@ nav a:hover, nav a.active {
     flex-direction: column;
     align-items: center;
 }
-
-.team-avatar {
-    width: 100%;
-    height: 220px;
-    background-color: var(--bg-light);
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--text-muted);
-    margin-bottom: 15px;
-    border: 2px dashed var(--border-color);
-    position: relative;
-    overflow: hidden;
-}
-
-.team-avatar svg {
-    width: 80px;
-    height: 80px;
-    opacity: 0.5;
-}
-
 .team-card h4 {
     font-size: 1.1rem;
     color: var(--text-dark);
     margin-bottom: 4px;
 }
-
 .team-card p {
     color: var(--light-green);
     font-weight: 600;
     font-size: 0.95rem;
 }
-
 .card {
     background: var(--white);
     border-radius: 8px;
@@ -260,43 +129,6 @@ nav a:hover, nav a.active {
     box-shadow: 0 4px 12px rgba(0,0,0,0.05);
     border-top: 4px solid var(--primary-green);
 }
-
-.card h3 {
-    margin-bottom: 12px;
-    color: var(--text-dark);
-}
-
-.card p {
-    color: var(--text-muted);
-    font-size: 0.95rem;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-    background: var(--white);
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-    margin-bottom: 30px;
-}
-
-th, td {
-    padding: 12px 15px;
-    text-align: left;
-    border-bottom: 1px solid #E2E8F0;
-}
-
-th {
-    background-color: var(--primary-green);
-    color: var(--white);
-    font-weight: 600;
-}
-
-tr:hover {
-    background-color: #F1F5F9;
-}
-
 footer {
     background-color: var(--accent-green);
     color: var(--white);
@@ -305,11 +137,54 @@ footer {
     margin-top: 60px;
     font-size: 0.9rem;
 }
-
 footer p {
     margin-bottom: 5px;
 }
-</style>
+
+    /* Team Avatar & Hover Overlay Styles */
+    .team-avatar {
+        width: 100%;
+        height: 220px;
+        background-color: var(--bg-light);
+        border-radius: 8px;
+        position: relative;
+        overflow: hidden;
+        margin-bottom: 15px;
+        border: 2px dashed var(--border-color);
+    }
+    .team-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(43, 90, 63, 0.92);
+        color: var(--white);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition: opacity 0.3s ease-in-out;
+        padding: 20px;
+        text-align: center;
+    }
+    .team-avatar:hover .team-overlay {
+        opacity: 1;
+    }
+    .contact-info p {
+        margin: 8px 0;
+        font-size: 0.95rem;
+        color: var(--white) !important;
+    }
+    .contact-info a {
+        color: var(--white);
+        text-decoration: underline;
+    }
+    .contact-info a:hover {
+        color: #E2E8F0;
+    }
+
+    </style>
 </head>
 <body>
     <header>
@@ -320,22 +195,20 @@ footer p {
             </div>
             <nav>
                 <ul>
-                    <li><a href="index.html" >Homepage</a></li>
-                        <li><a href="team.html" class="active">Team</a></li>
-                        <li><a href="km1.html" >KM I</a></li>
-                        <li><a href="km2.html" >KM II</a></li>
-                        <li><a href="nachwuchs.html" >Nachwuchs</a></li>
-                        <li><a href="downloads.html" >Downloads</a></li>
+                    <li><a href="index.html">Homepage</a></li>
+                    <li><a href="team.html" class="active">Team</a></li>
+                    <li><a href="km1.html">KM I</a></li>
+                    <li><a href="km2.html">KM II</a></li>
+                    <li><a href="nachwuchs.html">Nachwuchs</a></li>
+                    <li><a href="downloads.html">Downloads</a></li>
                 </ul>
             </nav>
         </div>
     </header>
-
     <div class="page-header">
         <h2>Team</h2>
         <p>Der Vorstand, Trainer und Betreuer des FC Stattegg</p>
     </div>
-
     <div class="container">
         <div class="card" style="margin-bottom: 40px; border-left: 5px solid var(--primary-green); border-top: none;">
             <h3 style="font-size: 1.8rem; color: var(--primary-green); margin-bottom: 15px;">Die Trainer im Mittelpunkt</h3>
@@ -343,90 +216,187 @@ footer p {
             <p style="margin-bottom: 15px; font-size: 1.05rem; color: var(--text-dark);">Neben den Trainer sind auch viele ehrenamtliche Mitarbeiter bei uns im Verein, die 365 Tage Ihr bestes für den Verein geben.</p>
             <p style="font-weight: 600; color: var(--primary-green); font-size: 1.1rem; margin-top: 20px;">Hier die Gesichter zu den Standbeinen des FC Stattegg.</p>
         </div>
-
         <h3 class="section-title">Funktionäre & Betreuer</h3>
         <div class="team-grid">
-            
             <div class="team-card">
                 <div class="team-avatar">
-                    <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                    <img src="images/stefan_gary.jpg" alt="Stefan Gary" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="team-avatar-fallback" style="display: none; width: 100%; height: 100%; align-items: center; justify-content: center; background: var(--bg-light); color: var(--text-muted);">
+                        <svg fill="currentColor" viewBox="0 0 24 24" width="80" height="80" style="opacity: 0.5;"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                    </div>
+                    <div class="team-overlay">
+                        <div class="contact-info">
+                            <p><strong>📞 Tel:</strong> <a href="tel:+436641234567">+43 664 1234567</a></p>
+                            <p><strong>✉️ E-Mail:</strong> <a href="mailto:stefan.gary@fc-stattegg.at">stefan.gary@fc-stattegg.at</a></p>
+                        </div>
+                    </div>
                 </div>
                 <h4>Stefan Gary</h4>
                 <p>Präsident</p>
             </div>
             <div class="team-card">
                 <div class="team-avatar">
-                    <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                    <img src="images/gernot_gratzer.jpg" alt="Gernot Gratzer" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="team-avatar-fallback" style="display: none; width: 100%; height: 100%; align-items: center; justify-content: center; background: var(--bg-light); color: var(--text-muted);">
+                        <svg fill="currentColor" viewBox="0 0 24 24" width="80" height="80" style="opacity: 0.5;"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                    </div>
+                    <div class="team-overlay">
+                        <div class="contact-info">
+                            <p><strong>📞 Tel:</strong> <a href="tel:+436642345678">+43 664 2345678</a></p>
+                            <p><strong>✉️ E-Mail:</strong> <a href="mailto:gernot.gratzer@fc-stattegg.at">gernot.gratzer@fc-stattegg.at</a></p>
+                        </div>
+                    </div>
                 </div>
                 <h4>Gernot Gratzer</h4>
                 <p>Vizepräsident</p>
             </div>
             <div class="team-card">
                 <div class="team-avatar">
-                    <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                    <img src="images/peter_bachler.jpg" alt="Peter Bachler" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="team-avatar-fallback" style="display: none; width: 100%; height: 100%; align-items: center; justify-content: center; background: var(--bg-light); color: var(--text-muted);">
+                        <svg fill="currentColor" viewBox="0 0 24 24" width="80" height="80" style="opacity: 0.5;"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                    </div>
+                    <div class="team-overlay">
+                        <div class="contact-info">
+                            <p><strong>📞 Tel:</strong> <a href="tel:+436643456789">+43 664 3456789</a></p>
+                            <p><strong>✉️ E-Mail:</strong> <a href="mailto:peter.bachler@fc-stattegg.at">peter.bachler@fc-stattegg.at</a></p>
+                        </div>
+                    </div>
                 </div>
                 <h4>Peter Bachler</h4>
                 <p>Jugendleiter</p>
             </div>
             <div class="team-card">
                 <div class="team-avatar">
-                    <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                    <img src="images/patrick_tatzer.jpg" alt="Patrick Tatzer" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="team-avatar-fallback" style="display: none; width: 100%; height: 100%; align-items: center; justify-content: center; background: var(--bg-light); color: var(--text-muted);">
+                        <svg fill="currentColor" viewBox="0 0 24 24" width="80" height="80" style="opacity: 0.5;"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                    </div>
+                    <div class="team-overlay">
+                        <div class="contact-info">
+                            <p><strong>📞 Tel:</strong> <a href="tel:+436644567890">+43 664 4567890</a></p>
+                            <p><strong>✉️ E-Mail:</strong> <a href="mailto:patrick.tatzer@fc-stattegg.at">patrick.tatzer@fc-stattegg.at</a></p>
+                        </div>
+                    </div>
                 </div>
                 <h4>Patrick Tatzer</h4>
                 <p>Jugendleiter Stellvertreter</p>
             </div>
             <div class="team-card">
                 <div class="team-avatar">
-                    <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                    <img src="images/alexander_todt.jpg" alt="Alexander Todt" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="team-avatar-fallback" style="display: none; width: 100%; height: 100%; align-items: center; justify-content: center; background: var(--bg-light); color: var(--text-muted);">
+                        <svg fill="currentColor" viewBox="0 0 24 24" width="80" height="80" style="opacity: 0.5;"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                    </div>
+                    <div class="team-overlay">
+                        <div class="contact-info">
+                            <p><strong>📞 Tel:</strong> <a href="tel:+436645678901">+43 664 5678901</a></p>
+                            <p><strong>✉️ E-Mail:</strong> <a href="mailto:alexander.todt@fc-stattegg.at">alexander.todt@fc-stattegg.at</a></p>
+                        </div>
+                    </div>
                 </div>
                 <h4>Alexander Todt</h4>
                 <p>Sportlicher Leiter</p>
             </div>
             <div class="team-card">
                 <div class="team-avatar">
-                    <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                    <img src="images/thomas_weiss.jpg" alt="Thomas Weiß" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="team-avatar-fallback" style="display: none; width: 100%; height: 100%; align-items: center; justify-content: center; background: var(--bg-light); color: var(--text-muted);">
+                        <svg fill="currentColor" viewBox="0 0 24 24" width="80" height="80" style="opacity: 0.5;"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                    </div>
+                    <div class="team-overlay">
+                        <div class="contact-info">
+                            <p><strong>📞 Tel:</strong> <a href="tel:+436646789012">+43 664 6789012</a></p>
+                            <p><strong>✉️ E-Mail:</strong> <a href="mailto:thomas.weiss@fc-stattegg.at">thomas.weiss@fc-stattegg.at</a></p>
+                        </div>
+                    </div>
                 </div>
                 <h4>Thomas Weiß</h4>
                 <p>Co Trainer KM1</p>
             </div>
             <div class="team-card">
                 <div class="team-avatar">
-                    <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                    <img src="images/robert_meixner.jpg" alt="Robert Meixner" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="team-avatar-fallback" style="display: none; width: 100%; height: 100%; align-items: center; justify-content: center; background: var(--bg-light); color: var(--text-muted);">
+                        <svg fill="currentColor" viewBox="0 0 24 24" width="80" height="80" style="opacity: 0.5;"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                    </div>
+                    <div class="team-overlay">
+                        <div class="contact-info">
+                            <p><strong>📞 Tel:</strong> <a href="tel:+436647890123">+43 664 7890123</a></p>
+                            <p><strong>✉️ E-Mail:</strong> <a href="mailto:robert.meixner@fc-stattegg.at">robert.meixner@fc-stattegg.at</a></p>
+                        </div>
+                    </div>
                 </div>
                 <h4>Robert Meixner</h4>
                 <p>Platzwart</p>
             </div>
             <div class="team-card">
                 <div class="team-avatar">
-                    <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                    <img src="images/david_zoelly.jpg" alt="David Zölly" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="team-avatar-fallback" style="display: none; width: 100%; height: 100%; align-items: center; justify-content: center; background: var(--bg-light); color: var(--text-muted);">
+                        <svg fill="currentColor" viewBox="0 0 24 24" width="80" height="80" style="opacity: 0.5;"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                    </div>
+                    <div class="team-overlay">
+                        <div class="contact-info">
+                            <p><strong>📞 Tel:</strong> <a href="tel:+436648901234">+43 664 8901234</a></p>
+                            <p><strong>✉️ E-Mail:</strong> <a href="mailto:david.zoelly@fc-stattegg.at">david.zoelly@fc-stattegg.at</a></p>
+                        </div>
+                    </div>
                 </div>
                 <h4>David Zölly</h4>
                 <p>Vorstand</p>
             </div>
             <div class="team-card">
                 <div class="team-avatar">
-                    <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                    <img src="images/hannes_pierer.jpg" alt="Hannes Pierer" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="team-avatar-fallback" style="display: none; width: 100%; height: 100%; align-items: center; justify-content: center; background: var(--bg-light); color: var(--text-muted);">
+                        <svg fill="currentColor" viewBox="0 0 24 24" width="80" height="80" style="opacity: 0.5;"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                    </div>
+                    <div class="team-overlay">
+                        <div class="contact-info">
+                            <p><strong>📞 Tel:</strong> <a href="tel:+436649012345">+43 664 9012345</a></p>
+                            <p><strong>✉️ E-Mail:</strong> <a href="mailto:hannes.pierer@fc-stattegg.at">hannes.pierer@fc-stattegg.at</a></p>
+                        </div>
+                    </div>
                 </div>
                 <h4>Hannes Pierer</h4>
                 <p>Platzsprecher</p>
             </div>
             <div class="team-card">
                 <div class="team-avatar">
-                    <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                    <img src="images/katharina_harzl.jpg" alt="Katharina Harzl" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="team-avatar-fallback" style="display: none; width: 100%; height: 100%; align-items: center; justify-content: center; background: var(--bg-light); color: var(--text-muted);">
+                        <svg fill="currentColor" viewBox="0 0 24 24" width="80" height="80" style="opacity: 0.5;"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                    </div>
+                    <div class="team-overlay">
+                        <div class="contact-info">
+                            <p><strong>📞 Tel:</strong> <a href="tel:+436640123456">+43 664 0123456</a></p>
+                            <p><strong>✉️ E-Mail:</strong> <a href="mailto:katharina.harzl@fc-stattegg.at">katharina.harzl@fc-stattegg.at</a></p>
+                        </div>
+                    </div>
                 </div>
                 <h4>Katharina Harzl</h4>
                 <p>Eventorganisation</p>
             </div>
             <div class="team-card">
                 <div class="team-avatar">
-                    <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                    <img src="images/melanie_detassis.jpg" alt="Melanie Detassis" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="team-avatar-fallback" style="display: none; width: 100%; height: 100%; align-items: center; justify-content: center; background: var(--bg-light); color: var(--text-muted);">
+                        <svg fill="currentColor" viewBox="0 0 24 24" width="80" height="80" style="opacity: 0.5;"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                    </div>
+                    <div class="team-overlay">
+                        <div class="contact-info">
+                            <p><strong>📞 Tel:</strong> <a href="tel:+436641122334">+43 664 1122334</a></p>
+                            <p><strong>✉️ E-Mail:</strong> <a href="mailto:melanie.detassis@fc-stattegg.at">melanie.detassis@fc-stattegg.at</a></p>
+                        </div>
+                    </div>
                 </div>
                 <h4>Melanie Detassis</h4>
                 <p>Kantine</p>
             </div>
+
         </div>
     </div>
-
     <footer>
         <p>&copy; FC Stattegg - am Wiesengrund 6 - 8046 Graz Stattegg</p>
         <p style="font-size: 0.8rem; opacity: 0.8; margin-top: 5px;">Offizielle Vereinshomepage</p>
