@@ -318,6 +318,104 @@ footer {
 footer p {
     margin-bottom: 5px;
 }
+
+    /* Slideshow Styles */
+    .hero-slideshow {
+        position: relative;
+        height: 420px;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    }
+    .slide {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        align-items: flex-end;
+        color: var(--white);
+        opacity: 0;
+        transition: opacity 1s ease-in-out;
+        z-index: 1;
+    }
+    .slide.active {
+        opacity: 1;
+        z-index: 2;
+    }
+    .slide::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.2) 60%, rgba(0,0,0,0.1) 100%);
+        z-index: 1;
+    }
+    .slide-content {
+        position: relative;
+        z-index: 2;
+        padding: 30px;
+        width: 100%;
+    }
+    .slide-content h2 {
+        font-size: 2.2rem;
+        margin-bottom: 8px;
+        text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    }
+    .slide-content p {
+        font-size: 1.1rem;
+        opacity: 0.95;
+    }
+    /* Slideshow Controls */
+    .slideshow-btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(0, 0, 0, 0.4);
+        color: white;
+        border: none;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        cursor: pointer;
+        z-index: 10;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.2rem;
+        transition: background 0.2s;
+    }
+    .slideshow-btn:hover {
+        background: rgba(59, 122, 87, 0.8);
+    }
+    .prev-btn { left: 15px; }
+    .next-btn { right: 15px; }
+    
+    .slideshow-dots {
+        position: absolute;
+        bottom: 15px;
+        right: 30px;
+        z-index: 10;
+        display: flex;
+        gap: 8px;
+    }
+    .dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.5);
+        cursor: pointer;
+        transition: background 0.2s;
+    }
+    .dot.active {
+        background: var(--white);
+    }
+
 </style>
 </head>
 <body>
@@ -341,23 +439,56 @@ footer p {
     </header>
 
     <div class="hero-sponsors-grid">
-        <div class="hero">
-            <div class="hero-content">
-                <h2>Gemeinsam stark. Gemeinsam Stattegg.</h2>
-                <p>Willkommen beim offiziellen Webauftritt unseres Fußballclubs.</p>
+        <div class="hero-slideshow">
+            <div class="slide active" style="background-image: url('Meistermannschaft.png');">
+                <div class="slide-content">
+                    <h2>Gemeinsam stark. Gemeinsam Stattegg.</h2>
+                    <p>Willkommen beim offiziellen Webauftritt unseres Fußballclubs.</p>
+                </div>
+            </div>
+            <div class="slide" style="background-image: url('Meistermannschaft.png');">
+                <div class="slide-content">
+                    <h2>Meistermannschaft & Teamgeist</h2>
+                    <p>Der erfolgreiche Weg des FC Stattegg in der Gebietsliga.</p>
+                </div>
+            </div>
+            <div class="slide" style="background-image: url('Meistermannschaft.png');">
+                <div class="slide-content">
+                    <h2>Nachwuchsarbeit auf höchstem Niveau</h2>
+                    <p>Von den Bambinis bis zur U16 – wir fördern die Talente von morgen.</p>
+                </div>
+            </div>
+            <div class="slide" style="background-image: url('Meistermannschaft.png');">
+                <div class="slide-content">
+                    <h2>Trainingsbetrieb & Sportplatz</h2>
+                    <p>Dienstag & Donnerstag ab 18:30 Uhr am Sportplatz am Wiesengrund.</p>
+                </div>
+            </div>
+
+            <button class="slideshow-btn prev-btn">&#10094;</button>
+            <button class="slideshow-btn next-btn">&#10095;</button>
+
+            <div class="slideshow-dots">
+                <span class="dot active"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
             </div>
         </div>
         
         <div class="sponsors-sidebar">
             <h3>Unsere Sponsoren</h3>
             <a href="https://www.grawe.at" target="_blank" class="sponsor-placeholder" title="Hauptsponsor GRAWE">
-                <img src="Logo_GRAWE.jpg" alt="GRAWE">
+                <!-- Später Logo einfügen: <img src="grawe_logo.png" alt="GRAWE"> -->
+                <span>Hauptsponsor (GRAWE)</span>
             </a>
-            <a href="https://www.raiffeisen.at/stmk/rlb/de/privatkunden.html" target="_blank" class="sponsor-placeholder" title="Sponsor 2">
-                <img src="raika-logo.jpg" alt="raika">
+            <a href="#" target="_blank" class="sponsor-placeholder" title="Sponsor 2">
+                <!-- Später Logo einfügen: <img src="sponsor2_logo.png" alt="Sponsor 2"> -->
+                <span>Sponsor 2</span>
             </a>
-            <a href="https://www.stattegg.eu/index.php?id=658&L=0" target="_blank" class="sponsor-placeholder" title="Sponsor 3">
-                <img src="stattegg_gemeinde_logo.jpg" alt="Sponsor 3">
+            <a href="#" target="_blank" class="sponsor-placeholder" title="Sponsor 3">
+                <!-- Später Logo einfügen: <img src="sponsor3_logo.png" alt="Sponsor 3"> -->
+                <span>Sponsor 3</span>
             </a>
             <a href="#" target="_blank" class="sponsor-placeholder" title="Sponsor 4">
                 <!-- Später Logo einfügen: <img src="sponsor4_logo.png" alt="Sponsor 4"> -->
@@ -394,5 +525,57 @@ footer p {
         <p>&copy; FC Stattegg - am Wiesengrund 6 - 8046 Graz Stattegg</p>
         <p style="font-size: 0.8rem; opacity: 0.8; margin-top: 5px;">Offizielle Vereinshomepage</p>
     </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var slides = document.querySelectorAll('.slide');
+            var dots = document.querySelectorAll('.dot');
+            var currentSlide = 0;
+            var slideInterval;
+
+            function showSlide(index) {
+                slides.forEach(function(slide, i) {
+                    slide.classList.remove('active');
+                    if(dots[i]) dots[i].classList.remove('active');
+                });
+                currentSlide = (index + slides.length) % slides.length;
+                slides[currentSlide].classList.add('active');
+                if(dots[currentSlide]) dots[currentSlide].classList.add('active');
+            }
+
+            function nextSlide() {
+                showSlide(currentSlide + 1);
+            }
+
+            function prevSlide() {
+                showSlide(currentSlide - 1);
+            }
+
+            var nextBtn = document.querySelector('.next-btn');
+            var prevBtn = document.querySelector('.prev-btn');
+
+            if(nextBtn) nextBtn.addEventListener('click', function() { nextSlide(); resetTimer(); });
+            if(prevBtn) prevBtn.addEventListener('click', function() { prevSlide(); resetTimer(); });
+
+            dots.forEach(function(dot, i) {
+                dot.addEventListener('click', function() {
+                    showSlide(i);
+                    resetTimer();
+                });
+            });
+
+            function startTimer() {
+                slideInterval = setInterval(nextSlide, 6000);
+            }
+
+            function resetTimer() {
+                clearInterval(slideInterval);
+                startTimer();
+            }
+
+            startTimer();
+        });
+    </script>
+
 </body>
 </html>
