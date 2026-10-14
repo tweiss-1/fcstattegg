@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online-Bestellung | FC Stattegg</title>
+    <style>
+        :root {
+            --primary-green: #2e7d32;
+            --dark-green: #1b5e20;
+            --light-green: #e8f5e9;
+            --accent-green: #4caf50;
+            --text-dark: #333333;
+            --bg-light: #f4f6f8;
+            --white: #ffffff;
+            --border-color: #dcdcdc;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        header {
+            background: var(--dark-green);
+            color: var(--white);
+            padding: 20px 0;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--white);
+            text-decoration: none;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav ul li a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        nav ul li a:hover, nav ul li a.active {
+            color: var(--accent-green);
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border-top: 5px solid var(--primary-green);
+        }
+
+        h1 {
+            color: var(--primary-green);
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 1.05rem;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--text-dark);
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="number"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 1rem;
+            background-color: #fafafa;
+            transition: border-color 0.2s, background-color 0.2s;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--primary-green);
+            background-color: var(--white);
+        }
+
+        .row {
+            display: flex;
+            gap: 20px;
+        }
+
+        .col {
+            flex: 1;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .checkbox-group input {
+            width: 18px;
+            height: 18px;
+            accent-color: var(--primary-green);
+        }
+
+        button[type="submit"] {
+            background-color: var(--primary-green);
+            color: var(--white);
+            border: none;
+            padding: 14px 30px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.2s, transform 0.1s;
+            margin-top: 10px;
+        }
+
+        button[type="submit"]:hover {
+            background-color: var(--dark-green);
+        }
+
+        button[type="submit"]:active {
+            transform: scale(0.99);
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #777;
+            font-size: 0.9rem;
+            margin-top: 50px;
+            border-top: 1px solid #eaeaea;
+        }
+
+        @media (max-width: 600px) {
+            .row {
+                flex-direction: column;
+                gap: 0;
+            }
+            .card {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="logo">FC Stattegg</a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Startseite</a></li>
+                    <li><a href="team.html">Team</a></li>
+                    <li><a href="downloads.html">Downloads</a></li>
+                    <li><a href="bestellung.html" class="active">Bestellung</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="card">
+            <h1>Online-Bestellformular</h1>
+            <p class="subtitle">Bestelle hier Fanartikel, Vereinsbekleidung oder Dauerkarten beim FC Stattegg.</p>
+
+            <!-- Formular (action kann z.B. mit einem kostenlosen Dienst wie Formspree.io verbunden werden) -->
+            <form action="https://formspree.io/f/deine-form-id" method="POST">
+                
+                <div class="row">
+                    <div class="col form-group">
+                        <label for="vorname">Vorname *</label>
+                        <input type="text" id="vorname" name="vorname" required placeholder="Max">
+                    </div>
+                    <div class="col form-group">
+                        <label for="nachname">Nachname *</label>
+                        <input type="text" id="nachname" name="nachname" required placeholder="Mustermann">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col form-group">
+                        <label for="email">E-Mail-Adresse *</label>
+                        <input type="email" id="email" name="email" required placeholder="max@example.com">
+                    </div>
+                    <div class="col form-group">
+                        <label for="telefon">Telefonnummer (optional)</label>
+                        <input type="tel" id="telefon" name="telefon" placeholder="+43 660 ...">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="artikel">Gewünschter Artikel / Produkt *</label>
+                    <select id="artikel" name="artikel" required>
+                        <option value="" disabled selected>Bitte auswählen...</option>
+                        <option value="fanschal">FC Stattegg Fanschal (€ 15,-)</option>
+                        <option value="trikot_heim">Heimtrikot (Grün/Weiß) (€ 65,-)</option>
+                        <option value="trikot_auswaerts">Auswärtstrikot (€ 65,-)</option>
+                        <option value="trainingsshirt">Trainingsshirt (€ 30,-)</option>
+                        <option value="wimpel">Vereinswimpel (€ 10,-)</option>
+                        <option value="dauerkarte">Saison-Dauerkarte (€ 50,-)</option>
+                    </select>
+                </div>
+
+                <div class="row">
+                    <div class="col form-group">
+                        <label for="groesse">Größe (falls zutreffend)</label>
+                        <select id="groesse" name="groesse">
+                            <option value="keine">Keine / Entfällt</option>
+                            <option value="S">Größe S</option>
+                            <option value="M">Größe M</option>
+                            <option value="L">Größe L</option>
+                            <option value="XL">Größe XL</option>
+                            <option value="XXL">Größe XXL</option>
+                        </select>
+                    </div>
+                    <div class="col form-group">
+                        <label for="menge">Anzahl *</label>
+                        <input type="number" id="menge" name="menge" value="1" min="1" max="10" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="lieferung">Übergabe / Versand *</label>
+                    <select id="lieferung" name="lieferung" required>
+                        <option value="abholung">Persönliche Abholung am Sportplatz am Wiesengrund</option>
+                        <option value="post">Postversand (zzgl. Versandkosten)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="nachricht">Bemerkungen / Sonderwünsche</label>
+                    <textarea id="nachricht" name="nachricht" rows="4" placeholder="Zusätzliche Infos, Rückfragen oder Wünsche..."></textarea>
+                </div>
+
+                <div class="form-group checkbox-group">
+                    <input type="checkbox" id="datenschutz" name="datenschutz" required>
+                    <label for="datenschutz" style="font-weight: normal; font-size: 0.95rem; margin-bottom: 0;">Ich stimme zu, dass meine Angaben zur Bearbeitung der Bestellung verarbeitet werden. *</label>
+                </div>
+
+                <button type="submit">Verbindlich bestellen</button>
+
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 FC Stattegg &bull; Sportplatz am Wiesengrund</p>
+    </footer>
+
+</body>
+</html>
