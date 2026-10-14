@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Online-Bestellung | FC Stattegg</title>
+    <title>Fanartikel-Bestellformular | FC Stattegg</title>
     <style>
         :root {
             --primary-green: #2e7d32;
@@ -43,6 +43,8 @@
             justify-content: space-between;
             align-items: center;
             padding: 0 20px;
+            flex-wrap: wrap;
+            gap: 10px;
         }
 
         .logo {
@@ -56,6 +58,7 @@
             list-style: none;
             display: flex;
             gap: 20px;
+            flex-wrap: wrap;
         }
 
         nav ul li a {
@@ -70,7 +73,7 @@
         }
 
         .container {
-            max-width: 800px;
+            max-width: 900px;
             margin: 40px auto;
             padding: 0 20px;
         }
@@ -95,6 +98,14 @@
             font-size: 1.05rem;
         }
 
+        h2.section-title {
+            font-size: 1.3rem;
+            color: var(--dark-green);
+            margin: 30px 0 15px 0;
+            padding-bottom: 5px;
+            border-bottom: 2px solid var(--light-green);
+        }
+
         .form-group {
             margin-bottom: 20px;
         }
@@ -109,9 +120,7 @@
         input[type="text"],
         input[type="email"],
         input[type="tel"],
-        input[type="number"],
-        select,
-        textarea {
+        select {
             width: 100%;
             padding: 12px 15px;
             border: 1px solid var(--border-color);
@@ -121,7 +130,7 @@
             transition: border-color 0.2s, background-color 0.2s;
         }
 
-        input:focus, select:focus, textarea:focus {
+        input:focus, select:focus {
             outline: none;
             border-color: var(--primary-green);
             background-color: var(--white);
@@ -136,11 +145,58 @@
             flex: 1;
         }
 
+        /* Artikeltabelle */
+        .article-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            margin-bottom: 20px;
+        }
+
+        .article-table th, .article-table td {
+            padding: 12px 10px;
+            text-align: left;
+            border-bottom: 1px solid #eaeaea;
+            font-size: 0.95rem;
+        }
+
+        .article-table th {
+            background-color: var(--light-green);
+            color: var(--dark-green);
+            font-weight: 600;
+        }
+
+        .article-table input[type="number"] {
+            width: 70px;
+            padding: 8px;
+            text-align: center;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+        }
+
+        .article-table select {
+            padding: 8px;
+            font-size: 0.9rem;
+        }
+
+        .total-box {
+            background: var(--light-green);
+            padding: 15px 20px;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--dark-green);
+            margin: 25px 0;
+        }
+
         .checkbox-group {
             display: flex;
             align-items: center;
             gap: 10px;
-            margin-top: 10px;
+            margin-top: 15px;
         }
 
         .checkbox-group input {
@@ -167,10 +223,6 @@
             background-color: var(--dark-green);
         }
 
-        button[type="submit"]:active {
-            transform: scale(0.99);
-        }
-
         footer {
             text-align: center;
             padding: 30px;
@@ -180,13 +232,17 @@
             border-top: 1px solid #eaeaea;
         }
 
-        @media (max-width: 600px) {
+        @media (max-width: 768px) {
             .row {
                 flex-direction: column;
                 gap: 0;
             }
             .card {
                 padding: 20px;
+            }
+            .article-table {
+                display: block;
+                overflow-x: auto;
             }
         }
     </style>
@@ -202,6 +258,7 @@
                     <li><a href="team.html">Team</a></li>
                     <li><a href="downloads.html">Downloads</a></li>
                     <li><a href="bestellung.html" class="active">Bestellung</a></li>
+                    <li><a href="sponsoren.html">Sponsoren</a></li>
                 </ul>
             </nav>
         </div>
@@ -209,81 +266,310 @@
 
     <div class="container">
         <div class="card">
-            <h1>Online-Bestellformular</h1>
-            <p class="subtitle">Bestelle hier Fanartikel, Vereinsbekleidung oder Dauerkarten beim FC Stattegg.</p>
+            <h1>Fanartikel-Bestellformular</h1>
+            <p class="subtitle">Wähle deine gewünschten Artikel aus. Du kannst mehrere Artikel gleichzeitig in den Mengen eintragen.</p>
 
-            <!-- Formular (action kann z.B. mit einem kostenlosen Dienst wie Formspree.io verbunden werden) -->
-            <form action="https://formspree.io/f/deine-form-id" method="POST">
+            <!-- 
+                WICHTIG FÜR E-MAILS (an euch UND den Besteller):
+                Nutze z.B. Formspree (formspree.io). Formspree schickt die Bestellung an eure hinterlegte Mail-Adresse.
+                Über die Auto-Responder-Funktion von Formspree (oder den Service) wird automatisch eine Bestätigung an die E-Mail-Adresse des Bestellers geschickt.
+            -->
+            <form action="https://formspree.io/f/DEINE-FORM-ID" method="POST" id="orderForm">
+                
+                <h2 class="section-title">1. Angaben zur Person</h2>
                 
                 <div class="row">
                     <div class="col form-group">
-                        <label for="vorname">Vorname *</label>
-                        <input type="text" id="vorname" name="vorname" required placeholder="Max">
+                        <label for="spieler">Name Spieler/in *</label>
+                        <input type="text" id="spieler" name="spieler" required placeholder="Vor- und Nachname">
                     </div>
                     <div class="col form-group">
-                        <label for="nachname">Nachname *</label>
-                        <input type="text" id="nachname" name="nachname" required placeholder="Mustermann">
+                        <label for="elternteil">Name Elternteil (bei Jugend)</label>
+                        <input type="text" id="elternteil" name="elternteil" placeholder="Optional">
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col form-group">
-                        <label for="email">E-Mail-Adresse *</label>
-                        <input type="email" id="email" name="email" required placeholder="max@example.com">
-                    </div>
-                    <div class="col form-group">
-                        <label for="telefon">Telefonnummer (optional)</label>
-                        <input type="tel" id="telefon" name="telefon" placeholder="+43 660 ...">
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="artikel">Gewünschter Artikel / Produkt *</label>
-                    <select id="artikel" name="artikel" required>
-                        <option value="" disabled selected>Bitte auswählen...</option>
-                        <option value="fanschal">FC Stattegg Fanschal (€ 15,-)</option>
-                        <option value="trikot_heim">Heimtrikot (Grün/Weiß) (€ 65,-)</option>
-                        <option value="trikot_auswaerts">Auswärtstrikot (€ 65,-)</option>
-                        <option value="trainingsshirt">Trainingsshirt (€ 30,-)</option>
-                        <option value="wimpel">Vereinswimpel (€ 10,-)</option>
-                        <option value="dauerkarte">Saison-Dauerkarte (€ 50,-)</option>
-                    </select>
-                </div>
-
-                <div class="row">
-                    <div class="col form-group">
-                        <label for="groesse">Größe (falls zutreffend)</label>
-                        <select id="groesse" name="groesse">
-                            <option value="keine">Keine / Entfällt</option>
-                            <option value="S">Größe S</option>
-                            <option value="M">Größe M</option>
-                            <option value="L">Größe L</option>
-                            <option value="XL">Größe XL</option>
-                            <option value="XXL">Größe XXL</option>
+                        <label for="mannschaft">Mannschaft *</label>
+                        <select id="mannschaft" name="mannschaft" required>
+                            <option value="" disabled selected>Bitte Mannschaft wählen...</option>
+                            <option value="Kampfmannschaft">Kampfmannschaft</option>
+                            <option value="U16">U16</option>
+                            <option value="U14">U14</option>
+                            <option value="U12">U12</option>
+                            <option value="U10">U10</option>
+                            <option value="U8">U8</option>
+                            <option value="U7">U7 / Bambini</option>
+                            <option value="Altherren / Sonstige">Altherren / Sonstige / Fan</option>
                         </select>
                     </div>
                     <div class="col form-group">
-                        <label for="menge">Anzahl *</label>
-                        <input type="number" id="menge" name="menge" value="1" min="1" max="10" required>
+                        <label for="email">E-Mail-Adresse (für Bestellbestätigung) *</label>
+                        <input type="email" id="email" name="email" required placeholder="deine.email@example.com">
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label for="lieferung">Übergabe / Versand *</label>
-                    <select id="lieferung" name="lieferung" required>
-                        <option value="abholung">Persönliche Abholung am Sportplatz am Wiesengrund</option>
-                        <option value="post">Postversand (zzgl. Versandkosten)</option>
-                    </select>
+                    <label for="telefon">Telefonnummer *</label>
+                    <input type="tel" id="telefon" name="telefon" required placeholder="+43 660 ...">
                 </div>
 
-                <div class="form-group">
-                    <label for="nachricht">Bemerkungen / Sonderwünsche</label>
-                    <textarea id="nachricht" name="nachricht" rows="4" placeholder="Zusätzliche Infos, Rückfragen oder Wünsche..."></textarea>
+                <h2 class="section-title">2. Artikel auswählen</h2>
+                
+                <table class="article-table">
+                    <thead>
+                        <tr>
+                            <th>Artikel</th>
+                            <th>Preis</th>
+                            <th>Größe</th>
+                            <th>Anzahl</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- 1. Turnbeutel -->
+                        <tr>
+                            <td>Turnbeutel</td>
+                            <td>€ 21,00</td>
+                            <td>-</td>
+                            <td><input type="number" name="Turnbeutel_Anzahl" min="0" value="0" data-price="21.00" class="qty-input"></td>
+                        </tr>
+                        <!-- 2. Body -->
+                        <tr>
+                            <td>Body</td>
+                            <td>€ 19,00</td>
+                            <td>
+                                <select name="Body_Groesse">
+                                    <option value="50/56">50/56</option>
+                                    <option value="62/68">62/68</option>
+                                    <option value="74/80">74/80</option>
+                                    <option value="86/92">86/92</option>
+                                </select>
+                            </td>
+                            <td><input type="number" name="Body_Anzahl" min="0" value="0" data-price="19.00" class="qty-input"></td>
+                        </tr>
+                        <!-- 3. Kappe Kinder -->
+                        <tr>
+                            <td>Kappe Kinder</td>
+                            <td>€ 14,00</td>
+                            <td>-</td>
+                            <td><input type="number" name="Kappe_Kinder_Anzahl" min="0" value="0" data-price="14.00" class="qty-input"></td>
+                        </tr>
+                        <!-- 4. Kappe -->
+                        <tr>
+                            <td>Kappe</td>
+                            <td>€ 16,50</td>
+                            <td>-</td>
+                            <td><input type="number" name="Kappe_Anzahl" min="0" value="0" data-price="16.50" class="qty-input"></td>
+                        </tr>
+                        <!-- 5. Hoodie Kinder -->
+                        <tr>
+                            <td>Hoodie Kinder</td>
+                            <td>€ 28,00</td>
+                            <td>
+                                <select name="Hoodie_Kinder_Groesse">
+                                    <option value="116">116</option>
+                                    <option value="128">128</option>
+                                    <option value="140">140</option>
+                                    <option value="152">152</option>
+                                    <option value="164">164</option>
+                                </select>
+                            </td>
+                            <td><input type="number" name="Hoodie_Kinder_Anzahl" min="0" value="0" data-price="28.00" class="qty-input"></td>
+                        </tr>
+                        <!-- 6. Polo Kinder -->
+                        <tr>
+                            <td>Polo Kinder</td>
+                            <td>€ 23,00</td>
+                            <td>
+                                <select name="Polo_Kinder_Groesse">
+                                    <option value="104">104</option>
+                                    <option value="116">116</option>
+                                    <option value="128">128</option>
+                                    <option value="140">140</option>
+                                    <option value="152">152</option>
+                                    <option value="164">164</option>
+                                </select>
+                            </td>
+                            <td><input type="number" name="Polo_Kinder_Anzahl" min="0" value="0" data-price="23.00" class="qty-input"></td>
+                        </tr>
+                        <!-- 7. Tshirt Kinder -->
+                        <tr>
+                            <td>T-Shirt Kinder</td>
+                            <td>€ 19,00</td>
+                            <td>
+                                <select name="Tshirt_Kinder_Groesse">
+                                    <option value="3/4 J">3/4 J</option>
+                                    <option value="5/6 J">5/6 J</option>
+                                    <option value="7/8 J">7/8 J</option>
+                                    <option value="9/10 J">9/10 J</option>
+                                    <option value="11/12 J">11/12 J</option>
+                                </select>
+                            </td>
+                            <td><input type="number" name="Tshirt_Kinder_Anzahl" min="0" value="0" data-price="19.00" class="qty-input"></td>
+                        </tr>
+                        <!-- 8. Tanktop Damen -->
+                        <tr>
+                            <td>Tanktop Damen</td>
+                            <td>€ 16,50</td>
+                            <td>
+                                <select name="Tanktop_Damen_Groesse">
+                                    <option value="XS">XS</option>
+                                    <option value="S">S</option>
+                                    <option value="M">M</option>
+                                    <option value="L">L</option>
+                                    <option value="XL">XL</option>
+                                    <option value="XXL">XXL</option>
+                                </select>
+                            </td>
+                            <td><input type="number" name="Tanktop_Damen_Anzahl" min="0" value="0" data-price="16.50" class="qty-input"></td>
+                        </tr>
+                        <!-- 9. Tanktop Premium Damen -->
+                        <tr>
+                            <td>Tanktop Premium Damen</td>
+                            <td>€ 22,00</td>
+                            <td>
+                                <select name="Tanktop_Premium_Damen_Groesse">
+                                    <option value="XS">XS</option>
+                                    <option value="S">S</option>
+                                    <option value="M">M</option>
+                                    <option value="L">L</option>
+                                    <option value="XL">XL</option>
+                                    <option value="XXL">XXL</option>
+                                    <option value="3XL">3XL</option>
+                                </select>
+                            </td>
+                            <td><input type="number" name="Tanktop_Premium_Damen_Anzahl" min="0" value="0" data-price="22.00" class="qty-input"></td>
+                        </tr>
+                        <!-- 10. Tanktop -->
+                        <tr>
+                            <td>Tanktop (Unisex)</td>
+                            <td>€ 18,00</td>
+                            <td>
+                                <select name="Tanktop_Groesse">
+                                    <option value="XS">XS</option>
+                                    <option value="S">S</option>
+                                    <option value="M">M</option>
+                                    <option value="L">L</option>
+                                    <option value="XL">XL</option>
+                                    <option value="XXL">XXL</option>
+                                    <option value="3XL">3XL</option>
+                                </select>
+                            </td>
+                            <td><input type="number" name="Tanktop_Anzahl" min="0" value="0" data-price="18.00" class="qty-input"></td>
+                        </tr>
+                        <!-- 11. Hoodie -->
+                        <tr>
+                            <td>Hoodie</td>
+                            <td>€ 55,00</td>
+                            <td>
+                                <select name="Hoodie_Groesse">
+                                    <option value="XS">XS</option>
+                                    <option value="S">S</option>
+                                    <option value="M">M</option>
+                                    <option value="L">L</option>
+                                    <option value="XL">XL</option>
+                                    <option value="XXL">XXL</option>
+                                    <option value="3XL">3XL</option>
+                                </select>
+                            </td>
+                            <td><input type="number" name="Hoodie_Anzahl" min="0" value="0" data-price="55.00" class="qty-input"></td>
+                        </tr>
+                        <!-- 12. Hoodie dick -->
+                        <tr>
+                            <td>Hoodie dick</td>
+                            <td>€ 72,00</td>
+                            <td>
+                                <select name="Hoodie_dick_Groesse">
+                                    <option value="XS">XS</option>
+                                    <option value="S">S</option>
+                                    <option value="M">M</option>
+                                    <option value="L">L</option>
+                                    <option value="XL">XL</option>
+                                    <option value="XXL">XXL</option>
+                                    <option value="3XL">3XL</option>
+                                </select>
+                            </td>
+                            <td><input type="number" name="Hoodie_dick_Anzahl" min="0" value="0" data-price="72.00" class="qty-input"></td>
+                        </tr>
+                        <!-- 13. Weste -->
+                        <tr>
+                            <td>Weste</td>
+                            <td>€ 56,00</td>
+                            <td>
+                                <select name="Weste_Groesse">
+                                    <option value="XS">XS</option>
+                                    <option value="S">S</option>
+                                    <option value="M">M</option>
+                                    <option value="L">L</option>
+                                    <option value="XL">XL</option>
+                                    <option value="XXL">XXL</option>
+                                    <option value="3XL">3XL</option>
+                                </select>
+                            </td>
+                            <td><input type="number" name="Weste_Anzahl" min="0" value="0" data-price="56.00" class="qty-input"></td>
+                        </tr>
+                        <!-- 14. Tshirt langarm -->
+                        <tr>
+                            <td>T-Shirt langarm</td>
+                            <td>€ 25,00</td>
+                            <td>
+                                <select name="Tshirt_langarm_Groesse">
+                                    <option value="XS">XS</option>
+                                    <option value="S">S</option>
+                                    <option value="M">M</option>
+                                    <option value="L">L</option>
+                                    <option value="XL">XL</option>
+                                    <option value="XXL">XXL</option>
+                                    <option value="3XL">3XL</option>
+                                </select>
+                            </td>
+                            <td><input type="number" name="Tshirt_langarm_Anzahl" min="0" value="0" data-price="25.00" class="qty-input"></td>
+                        </tr>
+                        <!-- 15. Polo -->
+                        <tr>
+                            <td>Polo</td>
+                            <td>€ 35,00</td>
+                            <td>
+                                <select name="Polo_Groesse">
+                                    <option value="S">S</option>
+                                    <option value="M">M</option>
+                                    <option value="L">L</option>
+                                    <option value="XL">XL</option>
+                                    <option value="XXL">XXL</option>
+                                </select>
+                            </td>
+                            <td><input type="number" name="Polo_Anzahl" min="0" value="0" data-price="35.00" class="qty-input"></td>
+                        </tr>
+                        <!-- 16. Tshirt -->
+                        <tr>
+                            <td>T-Shirt</td>
+                            <td>€ 21,00</td>
+                            <td>
+                                <select name="Tshirt_Groesse">
+                                    <option value="XS">XS</option>
+                                    <option value="S">S</option>
+                                    <option value="M">M</option>
+                                    <option value="L">L</option>
+                                    <option value="XL">XL</option>
+                                    <option value="XXL">XXL</option>
+                                    <option value="3XL">3XL</option>
+                                </select>
+                            </td>
+                            <td><input type="number" name="Tshirt_Anzahl" min="0" value="0" data-price="21.00" class="qty-input"></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <!-- Gesamtsummen-Anzeige -->
+                <div class="total-box">
+                    <span>Gesamtsumme:</span>
+                    <span id="totalPrice">€ 0,00</span>
                 </div>
 
                 <div class="form-group checkbox-group">
                     <input type="checkbox" id="datenschutz" name="datenschutz" required>
-                    <label for="datenschutz" style="font-weight: normal; font-size: 0.95rem; margin-bottom: 0;">Ich stimme zu, dass meine Angaben zur Bearbeitung der Bestellung verarbeitet werden. *</label>
+                    <label for="datenschutz" style="font-weight: normal; font-size: 0.95rem; margin-bottom: 0;">Ich stimme zu, dass meine Daten zur Abwicklung der Bestellung verarbeitet werden. *</label>
                 </div>
 
                 <button type="submit">Verbindlich bestellen</button>
@@ -295,6 +581,26 @@
     <footer>
         <p>&copy; 2026 FC Stattegg &bull; Sportplatz am Wiesengrund</p>
     </footer>
+
+    <!-- JavaScript für automatische Preisanzeige -->
+    <script>
+        const qtyInputs = document.querySelectorAll('.qty-input');
+        const totalPriceElement = document.getElementById('totalPrice');
+
+        function updateTotalPrice() {
+            let total = 0;
+            qtyInputs.forEach(input => {
+                const qty = parseInt(input.value) || 0;
+                const price = parseFloat(input.getAttribute('data-price')) || 0;
+                total += qty * price;
+            });
+            totalPriceElement.textContent = '€ ' + total.toFixed(2).replace('.', ',');
+        }
+
+        qtyInputs.forEach(input => {
+            input.addEventListener('input', updateTotalPrice);
+        });
+    </script>
 
 </body>
 </html>

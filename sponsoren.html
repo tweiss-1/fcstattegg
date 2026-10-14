@@ -43,6 +43,8 @@
             justify-content: space-between;
             align-items: center;
             padding: 0 20px;
+            flex-wrap: wrap;
+            gap: 10px;
         }
 
         .logo {
@@ -71,7 +73,7 @@
         }
 
         .container {
-            max-width: 1000px;
+            max-width: 1200px;
             margin: 40px auto;
             padding: 0 20px;
         }
@@ -100,14 +102,14 @@
         /* Sponsor Grid */
         .sponsor-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
             gap: 25px;
         }
 
         .sponsor-card {
             background: var(--white);
             border-radius: 12px;
-            padding: 30px;
+            padding: 25px;
             text-align: center;
             box-shadow: 0 4px 15px rgba(0,0,0,0.05);
             transition: transform 0.2s, box-shadow 0.2s;
@@ -124,52 +126,23 @@
         }
 
         .sponsor-logo-container {
-            height: 120px;
+            height: 100px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
 
         .sponsor-logo-container img {
             max-width: 100%;
             max-height: 100%;
             object-fit: contain;
-            filter: grayscale(20%);
-            transition: filter 0.2s;
-        }
-
-        .sponsor-card:hover .sponsor-logo-container img {
-            filter: grayscale(0%);
         }
 
         .sponsor-info h3 {
             color: var(--text-dark);
-            font-size: 1.2rem;
-            margin-bottom: 8px;
-        }
-
-        .sponsor-info p {
-            color: #666;
-            font-size: 0.95rem;
-            margin-bottom: 20px;
-        }
-
-        .sponsor-link {
-            display: inline-block;
-            background-color: var(--light-green);
-            color: var(--primary-green);
-            padding: 8px 16px;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.9rem;
-            transition: background-color 0.2s, color 0.2s;
-        }
-
-        .sponsor-link:hover {
-            background-color: var(--primary-green);
-            color: var(--white);
+            font-size: 1.1rem;
+            margin-bottom: 5px;
         }
 
         footer {
@@ -195,13 +168,11 @@
             <a href="index.html" class="logo">FC Stattegg</a>
             <nav>
                 <ul>
-                    <li><a href="index.html" class="active">Homepage</a></li>
-                        <li><a href="team.html" >Team</a></li>
-                        <li><a href="km1.html" >KM I</a></li>
-                        <li><a href="km2.html" >KM II</a></li>
-                        <li><a href="nachwuchs.html" >Nachwuchs</a></li>
-                        <li><a href="downloads.html" >Downloads</a></li>
-                        <li><a href="sponsoren.html" class="active">Sponsoren</a></li>
+                    <li><a href="index.html">Startseite</a></li>
+                    <li><a href="team.html">Team</a></li>
+                    <li><a href="downloads.html">Downloads</a></li>
+                    <li><a href="bestellung.html">Bestellung</a></li>
+                    <li><a href="sponsoren.html" class="active">Sponsoren</a></li>
                 </ul>
             </nav>
         </div>
@@ -214,44 +185,107 @@
             <p>Ein herzliches Dankeschön an all unsere treuen Sponsoren, Gönner und Partner! Durch Ihre wertvolle Unterstützung ermöglichen Sie unseren Spielern, dem Trainerteam und insbesondere unserer starken Jugendarbeit am Sportplatz am Wiesengrund optimale Bedingungen.</p>
         </div>
 
-        <!-- Sponsoren Raster -->
+        <!-- Sponsoren Raster (Alle 20 Sponsoren) -->
         <div class="sponsor-grid">
             
-            <!-- Sponsor 1 -->
             <div class="sponsor-card">
-                <div class="sponsor-logo-container">
-                    <!-- Ersetze 'images/sponsor1.png' durch den echten Dateinamen in deinem images-Ordner -->
-                    <img src="images/sponsor1.png" alt="Sponsor Logo 1">
-                </div>
-                <div class="sponsor-info">
-                    <h3>Hauptsponsor Musterfirma</h3>
-                    <p>Starker Partner für die Region und langjährigen Zusammenhalt im Verein.</p>
-                </div>
-                <a href="https://www.example.com" target="_blank" class="sponsor-link">Website besuchen &rarr;</a>
+                <div class="sponsor-logo-container"><img src="images/unser_stattegg.png" alt="Unser Stattegg"></div>
+                <div class="sponsor-info"><h3>Unser Stattegg</h3></div>
             </div>
 
-            <!-- Sponsor 2 -->
             <div class="sponsor-card">
-                <div class="sponsor-logo-container">
-                    <img src="images/sponsor2.png" alt="Sponsor Logo 2">
-                </div>
-                <div class="sponsor-info">
-                    <h3>Sport & Technik GmbH</h3>
-                    <p>Unterstützer unserer Kampfmannschaft und Ausstatter.</p>
-                </div>
-                <a href="https://www.example.com" target="_blank" class="sponsor-link">Website besuchen &rarr;</a>
+                <div class="sponsor-logo-container"><img src="images/raiffeisen.png" alt="Meine Raiffeisenbank"></div>
+                <div class="sponsor-info"><h3>Meine Raiffeisenbank</h3></div>
             </div>
 
-            <!-- Sponsor 3 -->
             <div class="sponsor-card">
-                <div class="sponsor-logo-container">
-                    <img src="images/sponsor3.png" alt="Sponsor Logo 3">
-                </div>
-                <div class="sponsor-info">
-                    <h3>Gastronomie & Genuss</h3>
-                    <p>Verlässlicher Partner bei unseren Heimspielen und Events.</p>
-                </div>
-                <a href="https://www.example.com" target="_blank" class="sponsor-link">Website besuchen &rarr;</a>
+                <div class="sponsor-logo-container"><img src="images/grawe.png" alt="Grawe"></div>
+                <div class="sponsor-info"><h3>Grawe</h3></div>
+            </div>
+
+            <div class="sponsor-card">
+                <div class="sponsor-logo-container"><img src="images/seidler.png" alt="Seidler"></div>
+                <div class="sponsor-info"><h3>Seidler</h3></div>
+            </div>
+
+            <div class="sponsor-card">
+                <div class="sponsor-logo-container"><img src="images/sport_union.png" alt="Sport Union"></div>
+                <div class="sponsor-info"><h3>Sport Union</h3></div>
+            </div>
+
+            <div class="sponsor-card">
+                <div class="sponsor-logo-container"><img src="images/achleitner.png" alt="Achleitner"></div>
+                <div class="sponsor-info"><h3>Achleitner</h3></div>
+            </div>
+
+            <div class="sponsor-card">
+                <div class="sponsor-logo-container"><img src="images/dworschak.png" alt="Dworschak"></div>
+                <div class="sponsor-info"><h3>Dworschak</h3></div>
+            </div>
+
+            <div class="sponsor-card">
+                <div class="sponsor-logo-container"><img src="images/ledolter.png" alt="Ledolter"></div>
+                <div class="sponsor-info"><h3>Ledolter</h3></div>
+            </div>
+
+            <div class="sponsor-card">
+                <div class="sponsor-logo-container"><img src="images/pirelli.png" alt="Pirelli"></div>
+                <div class="sponsor-info"><h3>Pirelli</h3></div>
+            </div>
+
+            <div class="sponsor-card">
+                <div class="sponsor-logo-container"><img src="images/strauss.png" alt="Strauss"></div>
+                <div class="sponsor-info"><h3>Strauss</h3></div>
+            </div>
+
+            <div class="sponsor-card">
+                <div class="sponsor-logo-container"><img src="images/zoetsch.png" alt="Zötsch"></div>
+                <div class="sponsor-info"><h3>Zötsch</h3></div>
+            </div>
+
+            <div class="sponsor-card">
+                <div class="sponsor-logo-container"><img src="images/kawea.png" alt="Kawea"></div>
+                <div class="sponsor-info"><h3>Kawea</h3></div>
+            </div>
+
+            <div class="sponsor-card">
+                <div class="sponsor-logo-container"><img src="images/il_pelo.png" alt="Il Pelo"></div>
+                <div class="sponsor-info"><h3>Il Pelo</h3></div>
+            </div>
+
+            <div class="sponsor-card">
+                <div class="sponsor-logo-container"><img src="images/betawellness.png" alt="BetaWellness"></div>
+                <div class="sponsor-info"><h3>BetaWellness</h3></div>
+            </div>
+
+            <div class="sponsor-card">
+                <div class="sponsor-logo-container"><img src="images/puntigamer.png" alt="Puntigamer"></div>
+                <div class="sponsor-info"><h3>Puntigamer</h3></div>
+            </div>
+
+            <div class="sponsor-card">
+                <div class="sponsor-logo-container"><img src="images/kusterer.png" alt="Kusterer"></div>
+                <div class="sponsor-info"><h3>Kusterer</h3></div>
+            </div>
+
+            <div class="sponsor-card">
+                <div class="sponsor-logo-container"><img src="images/flowtec.png" alt="Flowtec"></div>
+                <div class="sponsor-info"><h3>Flowtec</h3></div>
+            </div>
+
+            <div class="sponsor-card">
+                <div class="sponsor-logo-container"><img src="images/baron_filou.png" alt="Baron Filou"></div>
+                <div class="sponsor-info"><h3>Baron Filou</h3></div>
+            </div>
+
+            <div class="sponsor-card">
+                <div class="sponsor-logo-container"><img src="images/admiral.png" alt="Admiral"></div>
+                <div class="sponsor-info"><h3>Admiral</h3></div>
+            </div>
+
+            <div class="sponsor-card">
+                <div class="sponsor-logo-container"><img src="images/leihmax.png" alt="Leihmax"></div>
+                <div class="sponsor-info"><h3>Leihmax</h3></div>
             </div>
 
         </div>
