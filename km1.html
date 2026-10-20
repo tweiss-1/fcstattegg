@@ -175,46 +175,63 @@ footer p {
 }
 </style>
 
-    <!-- SheetJS (xlsx) for reading km1.xlsx in browser -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <!-- JavaScript zum Laden der km1.csv Kaderliste -->
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            fetch('km1.xlsx')
-                .then(function(res) { return res.arrayBuffer(); })
-                .then(function(ab) {
-                    var data = new Uint8Array(ab);
-                    var workbook = XLSX.read(data, {type: 'array'});
-                    var firstSheetName = workbook.SheetNames[0];
-                    var worksheet = workbook.Sheets[firstSheetName];
-                    var json = XLSX.utils.sheet_to_json(worksheet);
+            fetch('km1.csv')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Netzwerkfehler beim Laden von km1.csv');
+                    }
+                    return response.text();
+                })
+                .then(data => {
+                    const rows = data.split('\n').map(row => row.includes(';') ? row.split(';') : row.split(','));
+                    const headers = rows[0].map(h => h.trim().replace(/^["']|["']$/g, ''));
                     
-                    var tbody = document.getElementById('km1-table-body');
+                    const tbody = document.getElementById('km1-table-body');
                     if (!tbody) return;
                     tbody.innerHTML = '';
                     
-                    json.forEach(function(row) {
-                        var fotoCell = '';
-                        var fotoVal = row['Foto'];
-                        if (fotoVal && typeof fotoVal === 'string' && fotoVal.trim() !== '') {
-                            fotoCell = '<div style="width: 40px; height: 40px; border-radius: 50%; background: #E2E8F0; display: inline-flex; align-items: center; justify-content: center; overflow: hidden;"><img src="' + fotoVal + '" alt="' + (row['Name'] || '') + '" style="width: 100%; height: 100%; object-fit: cover;"></div>';
-                        } else {
-                            fotoCell = '<div style="width: 40px; height: 40px; border-radius: 50%; background: #E2E8F0; display: inline-flex; align-items: center; justify-content: center; color: var(--text-muted);"><svg fill="currentColor" viewBox="0 0 24 24" width="20" height="20"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg></div>';
+                    for (let i = 1; i < rows.length; i++) {
+                        if (rows[i].length >= headers.length) {
+                            const rowData = {};
+                            headers.forEach((h, index) => {
+                                rowData[h] = rows[i][index] ? rows[i][index].trim().replace(/^["']|["']$/g, '') : '';
+                            });
+
+                            const fotoVal = rowData['Foto'] || '';
+                            const nummer = rowData['Rueckennummer'] || '';
+                            const name = rowData['Name'] || '';
+                            const position = rowData['Position'] || '';
+
+                            if (!name) continue; // Leere Zeilen überspringen
+
+                            let fotoCell = '';
+                            if (fotoVal !== '') {
+                                fotoCell = `<div style="width: 40px; height: 40px; border-radius: 50%; background: #E2E8F0; display: inline-flex; align-items: center; justify-content: center; overflow: hidden;"><img src="${fotoVal}" alt="${name}" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" style="width: 100%; height: 100%; object-fit: cover;"><div style="display: none; width: 100%; height: 100%; align-items: center; justify-content: center; color: var(--text-muted);"><svg fill="currentColor" viewBox="0 0 24 24" width="20" height="20"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg></div></div>`;
+                            } else {
+                                fotoCell = `<div style="width: 40px; height: 40px; border-radius: 50%; background: #E2E8F0; display: inline-flex; align-items: center; justify-content: center; color: var(--text-muted);"><svg fill="currentColor" viewBox="0 0 24 24" width="20" height="20"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg></div>`;
+                            }
+                            
+                            const tr = document.createElement('tr');
+                            tr.innerHTML = `
+                                <td style="text-align: center;">${fotoCell}</td>
+                                <td style="text-align: center; font-weight: 700; color: var(--primary-green);">${nummer !== '' ? nummer : '-'}</td>
+                                <td style="font-weight: 600;">${name}</td>
+                                <td>${position}</td>
+                            `;
+                            tbody.appendChild(tr);
                         }
-                        
-                        var tr = document.createElement('tr');
-                        tr.innerHTML = '<td style="text-align: center;">' + fotoCell + '</td>' +
-                                       '<td style="text-align: center; font-weight: 700; color: var(--primary-green);">' + (row['Rückennummer'] !== undefined && row['Rückennummer'] !== null && String(row['Rückennummer']).trim() !== '' ? row['Rückennummer'] : '-') + '</td>' +
-                                       '<td style="font-weight: 600;">' + (row['Name'] || '') + '</td>' +
-                                       '<td>' + (row['Position'] || '') + '</td>';
-                        tbody.appendChild(tr);
-                    });
+                    }
                 })
-                .catch(function(err) {
-                    console.error("Fehler beim Laden von km1.xlsx:", err);
+                .catch(err => {
+                    console.error("Fehler beim Laden von km1.csv:", err);
+                    const tbody = document.getElementById('km1-table-body');
+                    if (tbody) tbody.innerHTML = '<tr><td colspan="4" style="text-align: center; color: red;">Fehler beim Laden der Kaderliste.</td></tr>';
                 });
         });
     </script>
-
 </head>
 <body>
     <header>
@@ -231,7 +248,7 @@ footer p {
                     <li><a href="km2.html">KM II</a></li>
                     <li><a href="nachwuchs.html">Nachwuchs</a></li>
                     <li><a href="downloads.html">Downloads</a></li>
-                    <li><a href="sponsoren.html" >Sponsoren</a></li>
+                    <li><a href="sponsoren.html">Sponsoren</a></li>
                 </ul>
             </nav>
         </div>
@@ -246,7 +263,7 @@ footer p {
         <h3 class="section-title">Über die KM</h3>
         <div class="card" style="margin-bottom: 30px;">
             <h3>Zusammenarbeit & Entwicklung</h3>
-            <p>Die Kampfmannschaft bildet das Aushängeschild des Vereins. Hier erhalten die Talente die sich in der KM II beweißen die Chance aufzuzeigen im Erwachsenenbereich.</p>
+            <p>Die Kampfmannschaft bildet das Aushängeschild des Vereins. Hier erhalten die Talente die sich in der KM II beweisen die Chance aufzuzeigen im Erwachsenenbereich.</p>
         </div>
         <h3 class="section-title">Trainerteam & Saison</h3>
         <div class="grid-3">
@@ -276,154 +293,26 @@ footer p {
                     </tr>
                 </thead>
                 <tbody id="km1-table-body">
-                    <!-- Wird dynamisch aus km1.xlsx geladen -->
+                    <!-- Wird dynamisch aus km1.csv geladen -->
                     <tr>
-                        <td style="text-align: center;"><div style="width: 40px; height: 40px; border-radius: 50%; background: #E2E8F0; display: inline-flex; align-items: center; justify-content: center; overflow: hidden;"><img src="watermarked_img_15564240361838757544.jpg" alt="Tobias Mocnik" style="width: 100%; height: 100%; object-fit: cover;"></div></td>
-                        <td style="font-weight: 600;">Tobias Mocnik</td>
-                        <td>Tor</td>
-                    </tr>
-                    <tr>
-                        <td style="text-align: center;"><div style="width: 40px; height: 40px; border-radius: 50%; background: #E2E8F0; display: inline-flex; align-items: center; justify-content: center; overflow: hidden;"><img src="watermarked_img_17374683741669343875.jpg" alt="Gabriel Paul Schmeja" style="width: 100%; height: 100%; object-fit: cover;"></div></td>
-                        <td style="font-weight: 600;">Gabriel Paul Schmeja</td>
-                        <td>Tor</td>
-                    </tr>
-                    <tr>
-                        <td style="text-align: center;"><div style="width: 40px; height: 40px; border-radius: 50%; background: #E2E8F0; display: inline-flex; align-items: center; justify-content: center; overflow: hidden;"><img src="watermarked_img_11318932386407447804.jpg" alt="Florian August Winter" style="width: 100%; height: 100%; object-fit: cover;"></div></td>
-                        <td style="font-weight: 600;">Florian August Winter</td>
-                        <td>Tor</td>
-                    </tr>                    <tr>
-                        <td style="text-align: center;"><div style="width: 40px; height: 40px; border-radius: 50%; background: #E2E8F0; display: inline-flex; align-items: center; justify-content: center; overflow: hidden;"><img src="watermarked_img_5416370386814750794.jpg" alt="Niklas Würger" style="width: 100%; height: 100%; object-fit: cover;"></div></td>
-                        <td style="font-weight: 600;">Niklas Würger</td>
-                        <td>Tor</td>
-                    </tr>
-                    <tr>
-                        <td style="text-align: center;"><div style="width: 40px; height: 40px; border-radius: 50%; background: #E2E8F0; display: inline-flex; align-items: center; justify-content: center; overflow: hidden;"><img src="watermarked_img_16964895648679541478.jpg" alt="Art Bashotaj" style="width: 100%; height: 100%; object-fit: cover;"></div></td>
-                        <td style="font-weight: 600;">Art Bashotaj</td>
-                        <td>Feldspieler</td>
-                    </tr>
-                    <tr>
-                        <td style="text-align: center;"><div style="width: 40px; height: 40px; border-radius: 50%; background: #E2E8F0; display: inline-flex; align-items: center; justify-content: center; overflow: hidden;"><img src="watermarked_img_5858934952054086524.jpg" alt="Bilegsaikhan Enkhsaikhan" style="width: 100%; height: 100%; object-fit: cover;"></div></td>
-                        <td style="font-weight: 600;">Bilegsaikhan Enkhsaikhan</td>
-                        <td>Feldspieler</td>
-                    </tr>
-                    <tr>
-                        <td style="text-align: center;"><div style="width: 40px; height: 40px; border-radius: 50%; background: #E2E8F0; display: inline-flex; align-items: center; justify-content: center; overflow: hidden;"><img src="watermarked_img_7207725846979707399.jpg" alt="Florian Frisch" style="width: 100%; height: 100%; object-fit: cover;"></div></td>
-                        <td style="font-weight: 600;">Florian Frisch</td>
-                        <td>Feldspieler</td>
-                    </tr>
-                    <tr>
-                        <td style="text-align: center;"><div style="width: 40px; height: 40px; border-radius: 50%; background: #E2E8F0; display: inline-flex; align-items: center; justify-content: center; overflow: hidden;"><img src="watermarked_img_1432188935800251911.jpg" alt="Julian Gary" style="width: 100%; height: 100%; object-fit: cover;"></div></td>
-                        <td style="font-weight: 600;">Julian Gary</td>
-                        <td>Feldspieler</td>
-                    </tr>
-                    <tr>
-                        <td style="text-align: center;"><div style="width: 40px; height: 40px; border-radius: 50%; background: #E2E8F0; display: inline-flex; align-items: center; justify-content: center; overflow: hidden;"><img src="watermarked_img_11668434630068407178.jpg" alt="Matthias Gsöls" style="width: 100%; height: 100%; object-fit: cover;"></div></td>
-                        <td style="font-weight: 600;">Matthias Gsöls</td>
-                        <td>Feldspieler</td>
-                    </tr>
-                    <tr>
-                        <td style="text-align: center;"><div style="width: 40px; height: 40px; border-radius: 50%; background: #E2E8F0; display: inline-flex; align-items: center; justify-content: center; color: var(--text-muted);"><svg fill="currentColor" viewBox="0 0 24 24" width="20" height="20"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg></div></td>
-                        <td style="font-weight: 600;">Samuel Hiden</td>
-                        <td>Feldspieler</td>
-                    </tr>
-                    <tr>
-                        <td style="text-align: center;"><div style="width: 40px; height: 40px; border-radius: 50%; background: #E2E8F0; display: inline-flex; align-items: center; justify-content: center; color: var(--text-muted);"><svg fill="currentColor" viewBox="0 0 24 24" width="20" height="20"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg></div></td>
-                        <td style="font-weight: 600;">David Jutric</td>
-                        <td>Feldspieler</td>
-                    </tr>
-                    <tr>
-                        <td style="text-align: center;"><div style="width: 40px; height: 40px; border-radius: 50%; background: #E2E8F0; display: inline-flex; align-items: center; justify-content: center; color: var(--text-muted);"><svg fill="currentColor" viewBox="0 0 24 24" width="20" height="20"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg></div></td>
-                        <td style="font-weight: 600;">Liam Dario Vari Karner</td>
-                        <td>Feldspieler</td>
-                    </tr>
-                    <tr>
-                        <td style="text-align: center;"><div style="width: 40px; height: 40px; border-radius: 50%; background: #E2E8F0; display: inline-flex; align-items: center; justify-content: center; color: var(--text-muted);"><svg fill="currentColor" viewBox="0 0 24 24" width="20" height="20"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg></div></td>
-                        <td style="font-weight: 600;">Moritz Koschak</td>
-                        <td>Feldspieler</td>
-                    </tr>
-                    <tr>
-                        <td style="text-align: center;"><div style="width: 40px; height: 40px; border-radius: 50%; background: #E2E8F0; display: inline-flex; align-items: center; justify-content: center; color: var(--text-muted);"><svg fill="currentColor" viewBox="0 0 24 24" width="20" height="20"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg></div></td>
-                        <td style="font-weight: 600;">Lukas Lackner</td>
-                        <td>Feldspieler</td>
-                    </tr>
-                    <tr>
-                        <td style="text-align: center;"><div style="width: 40px; height: 40px; border-radius: 50%; background: #E2E8F0; display: inline-flex; align-items: center; justify-content: center; color: var(--text-muted);"><svg fill="currentColor" viewBox="0 0 24 24" width="20" height="20"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg></div></td>
-                        <td style="font-weight: 600;">Benedikt Mestel</td>
-                        <td>Feldspieler</td>
-                    </tr>
-                    <tr>
-                        <td style="text-align: center;"><div style="width: 40px; height: 40px; border-radius: 50%; background: #E2E8F0; display: inline-flex; align-items: center; justify-content: center; color: var(--text-muted);"><svg fill="currentColor" viewBox="0 0 24 24" width="20" height="20"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg></div></td>
-                        <td style="font-weight: 600;">Jonah Mohr</td>
-                        <td>Feldspieler</td>
-                    </tr>
-                    <tr>
-                        <td style="text-align: center;"><div style="width: 40px; height: 40px; border-radius: 50%; background: #E2E8F0; display: inline-flex; align-items: center; justify-content: center; color: var(--text-muted);"><svg fill="currentColor" viewBox="0 0 24 24" width="20" height="20"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg></div></td>
-                        <td style="font-weight: 600;">Estephane Muanda</td>
-                        <td>Feldspieler</td>
-                    </tr>
-                    <tr>
-                        <td style="text-align: center;"><div style="width: 40px; height: 40px; border-radius: 50%; background: #E2E8F0; display: inline-flex; align-items: center; justify-content: center; color: var(--text-muted);"><svg fill="currentColor" viewBox="0 0 24 24" width="20" height="20"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg></div></td>
-                        <td style="font-weight: 600;">Jan Petek</td>
-                        <td>Feldspieler</td>
-                    </tr>
-                    <tr>
-                        <td style="text-align: center;"><div style="width: 40px; height: 40px; border-radius: 50%; background: #E2E8F0; display: inline-flex; align-items: center; justify-content: center; color: var(--text-muted);"><svg fill="currentColor" viewBox="0 0 24 24" width="20" height="20"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg></div></td>
-                        <td style="font-weight: 600;">Paul Saurugger</td>
-                        <td>Feldspieler</td>
-                    </tr>
-                    <tr>
-                        <td style="text-align: center;"><div style="width: 40px; height: 40px; border-radius: 50%; background: #E2E8F0; display: inline-flex; align-items: center; justify-content: center; color: var(--text-muted);"><svg fill="currentColor" viewBox="0 0 24 24" width="20" height="20"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg></div></td>
-                        <td style="font-weight: 600;">Daniel Schinagl</td>
-                        <td>Feldspieler</td>
-                    </tr>
-                    <tr>
-                        <td style="text-align: center;"><div style="width: 40px; height: 40px; border-radius: 50%; background: #E2E8F0; display: inline-flex; align-items: center; justify-content: center; color: var(--text-muted);"><svg fill="currentColor" viewBox="0 0 24 24" width="20" height="20"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg></div></td>
-                        <td style="font-weight: 600;">Tobias Sendlhofer</td>
-                        <td>Feldspieler</td>
-                    </tr>
-                    <tr>
-                        <td style="text-align: center;"><div style="width: 40px; height: 40px; border-radius: 50%; background: #E2E8F0; display: inline-flex; align-items: center; justify-content: center; color: var(--text-muted);"><svg fill="currentColor" viewBox="0 0 24 24" width="20" height="20"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg></div></td>
-                        <td style="font-weight: 600;">Florian Stelzer</td>
-                        <td>Feldspieler</td>
-                    </tr>
-                    <tr>
-                        <td style="text-align: center;"><div style="width: 40px; height: 40px; border-radius: 50%; background: #E2E8F0; display: inline-flex; align-items: center; justify-content: center; color: var(--text-muted);"><svg fill="currentColor" viewBox="0 0 24 24" width="20" height="20"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg></div></td>
-                        <td style="font-weight: 600;">Paul Sterrer</td>
-                        <td>Feldspieler</td>
-                    </tr>
-                    <tr>
-                        <td style="text-align: center;"><div style="width: 40px; height: 40px; border-radius: 50%; background: #E2E8F0; display: inline-flex; align-items: center; justify-content: center; color: var(--text-muted);"><svg fill="currentColor" viewBox="0 0 24 24" width="20" height="20"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg></div></td>
-                        <td style="font-weight: 600;">Alexander Todt</td>
-                        <td>Feldspieler</td>
-                    </tr>
-                    <tr>
-                        <td style="text-align: center;"><div style="width: 40px; height: 40px; border-radius: 50%; background: #E2E8F0; display: inline-flex; align-items: center; justify-content: center; color: var(--text-muted);"><svg fill="currentColor" viewBox="0 0 24 24" width="20" height="20"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg></div></td>
-                        <td style="font-weight: 600;">Timon Colin Traun</td>
-                        <td>Feldspieler</td>
-                    </tr>
-                    <tr>
-                        <td style="text-align: center;"><div style="width: 40px; height: 40px; border-radius: 50%; background: #E2E8F0; display: inline-flex; align-items: center; justify-content: center; color: var(--text-muted);"><svg fill="currentColor" viewBox="0 0 24 24" width="20" height="20"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg></div></td>
-                        <td style="font-weight: 600;">Tim Vorstandlechner</td>
-                        <td>Feldspieler</td>
-                    </tr>
-                    <tr>
-                        <td style="text-align: center;"><div style="width: 40px; height: 40px; border-radius: 50%; background: #E2E8F0; display: inline-flex; align-items: center; justify-content: center; color: var(--text-muted);"><svg fill="currentColor" viewBox="0 0 24 24" width="20" height="20"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg></div></td>
-                        <td style="font-weight: 600;">Gabriel Wagner</td>
-                        <td>Feldspieler</td>
-                    </tr>
-                    <tr>
-                        <td style="text-align: center;"><div style="width: 40px; height: 40px; border-radius: 50%; background: #E2E8F0; display: inline-flex; align-items: center; justify-content: center; color: var(--text-muted);"><svg fill="currentColor" viewBox="0 0 24 24" width="20" height="20"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg></div></td>
-                        <td style="font-weight: 600;">Thomas Weiss</td>
-                        <td>Co-Trainer / Spieler</td>
+                        <td colspan="4" style="text-align: center; color: var(--text-muted);">Lade Kaderliste...</td>
                     </tr>
                 </tbody>
             </table>
         </div>
 
-                        <h3 class="section-title">Aktuelle Tabelle (Gebietsliga Mitte)</h3>
+        <h3 class="section-title">Aktuelle Tabelle (Gebietsliga Mitte)</h3>
         <div style="background: var(--white); border-radius: 12px; padding: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); margin-bottom: 40px; border-top: 4px solid var(--primary-green); overflow: hidden;">
             <p style="margin-bottom: 12px; color: var(--text-muted); font-size: 0.95rem;">Live-Daten direkt vom Steirischen Fußballverband (StFV):</p>
             <div style="width: 100%; overflow: hidden; border-radius: 8px; border: 1px solid var(--border-color); background: #fff;">
                 <iframe src="https://www.stfv.at/stfv/Bewerb/231500?Gebietsliga-Mitte" width="100%" height="580px" style="border: none; display: block;" title="Gebietsliga Mitte Tabelle"></iframe>
             </div>
         </div>
+    </div>
+
+    <footer>
+        <p>&copy; FC Stattegg - am Wiesengrund 6 - 8046 Graz Stattegg</p>
+        <p style="font-size: 0.8rem; opacity: 0.8; margin-top: 5px;">Offizielle Vereinshomepage</p>
+    </footer>
+</body>
+</html>
