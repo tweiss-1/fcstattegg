@@ -119,34 +119,6 @@ nav a:hover, nav a.active {
     }
 }
 
-.hero {
-    position: relative;
-    height: 420px;
-    border-radius: 12px;
-    overflow: hidden;
-    background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.6)), url('Meistermannschaft.png') center/cover no-repeat;
-    display: flex;
-    align-items: flex-end;
-    color: var(--white);
-    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-}
-
-.hero-content {
-    padding: 30px;
-    width: 100%;
-}
-
-.hero-content h2 {
-    font-size: 2.2rem;
-    margin-bottom: 8px;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
-}
-
-.hero-content p {
-    font-size: 1.1rem;
-    opacity: 0.95;
-}
-
 /* Rechte Sponsorenbox mit 5 Platzhaltern */
 .sidebar-sponsor {
     background: var(--white);
@@ -190,58 +162,6 @@ nav a:hover, nav a.active {
     margin-bottom: 50px;
 }
 
-.team-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 25px;
-    margin-bottom: 50px;
-}
-
-.team-card {
-    background: var(--white);
-    border-radius: 12px;
-    padding: 20px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-    text-align: center;
-    border-top: 4px solid var(--primary-green);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.team-avatar {
-    width: 100%;
-    height: 220px;
-    background-color: var(--bg-light);
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--text-muted);
-    margin-bottom: 15px;
-    border: 2px dashed var(--border-color);
-    position: relative;
-    overflow: hidden;
-}
-
-.team-avatar svg {
-    width: 80px;
-    height: 80px;
-    opacity: 0.5;
-}
-
-.team-card h4 {
-    font-size: 1.1rem;
-    color: var(--text-dark);
-    margin-bottom: 4px;
-}
-
-.team-card p {
-    color: var(--light-green);
-    font-weight: 600;
-    font-size: 0.95rem;
-}
-
 .card {
     background: var(--white);
     border-radius: 8px;
@@ -258,32 +178,6 @@ nav a:hover, nav a.active {
 .card p {
     color: var(--text-muted);
     font-size: 0.95rem;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-    background: var(--white);
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-    margin-bottom: 30px;
-}
-
-th, td {
-    padding: 12px 15px;
-    text-align: left;
-    border-bottom: 1px solid #E2E8F0;
-}
-
-th {
-    background-color: var(--primary-green);
-    color: var(--white);
-    font-weight: 600;
-}
-
-tr:hover {
-    background-color: #F1F5F9;
 }
 
 footer {
@@ -408,13 +302,13 @@ footer p {
             <nav>
                 <ul>
                     <li><a href="index.html" class="active">Homepage</a></li>
-                        <li><a href="team.html" >Team</a></li>
-                        <li><a href="km1.html" >KM I</a></li>
-                        <li><a href="km2.html" >KM II</a></li>
-                        <li><a href="nachwuchs.html" >Nachwuchs</a></li>
-                        <li><a href="downloads.html" >Downloads</a></li>
-                        <li><a href="sponsoren.html" >Sponsoren</a></li>
-                        <li>
+                    <li><a href="team.html">Team</a></li>
+                    <li><a href="km1.html">KM I</a></li>
+                    <li><a href="km2.html">KM II</a></li>
+                    <li><a href="nachwuchs.html">Nachwuchs</a></li>
+                    <li><a href="downloads.html">Downloads</a></li>
+                    <li><a href="sponsoren.html">Sponsoren</a></li>
+                    <li>
                         <a href="https://www.instagram.com/fcstattegg/" target="_blank" rel="noopener noreferrer" title="Instagram" style="display: flex; align-items: center; justify-content: center; padding: 5px 8px; color: inherit;" onmouseover="this.style.color='#E1306C'" onmouseout="this.style.color='inherit'">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
@@ -427,104 +321,51 @@ footer p {
             </nav>
         </div>
     </header>
-    <!-- Willkommens-Intro über der Slideshow -->
-     <div style="position: relative; background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('images/banner-bg.jpg') center/cover no-repeat; border-radius: 12px; padding: 40px 30px; margin-bottom: 30px; color: var(--white); box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
-    
-    <!-- Grüner Akzentstrich links (optional für das Design-System) -->
-    <div style="position: absolute; left: 0; top: 30px; bottom: 30px; width: 6px; background: var(--primary-green); border-radius: 0 4px 4px 0;"></div>
 
-    <div style="padding-left: 10px;">
-        <span style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; color: #4ADE80; font-weight: bold; display: block; margin-bottom: 5px;">Fussball seit 1972</span>
-        <h2 style="font-size: 2rem; margin: 0 0 15px 0; color: #FFFFFF; font-weight: 700;">Willkommen beim FC Stattegg</h2>
-        <p style="font-size: 1.05rem; margin: 0; line-height: 1.6; color: rgba(255, 255, 255, 0.9); max-width: 900px;">
-            Seit 1972 sind unsere Farben Grün und Weiß. Jedes einzelne Mitglied unserer großen Familie lebt für den Verein. Egal ob Funktionär, Trainer, Spieler oder Sponsor – Jeder verkörpert unsere Philosophie!
-        </p>
-    </div>
-</div>
-   <!-- <div class="container" style="margin-bottom: 0; padding-bottom: 0;">
-        <div style="background: var(--white); border-radius: 12px; padding: 25px 30px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); border-left: 5px solid var(--primary-green);">
-            <h2 style="font-size: 1.8rem; color: var(--primary-green); margin-bottom: 8px;">Willkommen beim FC Stattegg - Fußball seit 1972</h2>
-            <p style="font-size: 1.05rem; color: var(--text-dark); margin: 0;">
-            Seit 1972 sind unsere Farben Grün und Weiß. Jedes einzelne Mitglied unserer großen Familie lebt für den Verein. 
-            Egal ob Funktionär, Trainer, Spieler, oder Sponsor - Jeder verkörpert unsere Philosophie!</p>
+    <!-- Willkommens-Intro (Statisch im HTML) -->
+    <div style="position: relative; background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('images/banner-bg.jpg') center/cover no-repeat; border-radius: 12px; padding: 40px 30px; margin: 40px auto 30px auto; max-width: 1200px; color: var(--white); box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+        <div style="position: absolute; left: 0; top: 30px; bottom: 30px; width: 6px; background: var(--primary-green); border-radius: 0 4px 4px 0;"></div>
+        <div style="padding-left: 10px;">
+            <span style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; color: #4ADE80; font-weight: bold; display: block; margin-bottom: 5px;">Fussball seit 1972</span>
+            <h2 style="font-size: 2rem; margin: 0 0 15px 0; color: #FFFFFF; font-weight: 700;">Willkommen beim FC Stattegg</h2>
+            <p style="font-size: 1.05rem; margin: 0; line-height: 1.6; color: rgba(255, 255, 255, 0.9); max-width: 900px;">
+                Seit 1972 sind unsere Farben Grün und Weiß. Jedes einzelne Mitglied unserer großen Familie lebt für den Verein. Egal ob Funktionär, Trainer, Spieler oder Sponsor – Jeder verkörpert unsere Philosophie!
+            </p>
         </div>
-    </div> 
--->
+    </div>
+
     <div class="hero-sponsors-grid">
-        <div class="hero-slideshow">
-            <!-- Folie 1 -->
-            <a href="team.html" class="slide active" style="background-image: url('images/slide1.JPG'); background-size: cover; background-position: center; text-decoration: none;">
-                <div class="slide-content">
-                    <h2 style="color: #ffffff !important;">Gemeinsam stark. Gemeinsam Stattegg.</h2>
-                    <p style="color: #ffffff !important;">Willkommen beim offiziellen Webauftritt unseres Fußballclubs.</p>
-                </div>
-            </a>
-
-            <!-- Folie 2 -->
-            <a href="km1.html" class="slide" style="background-image: url('images/slide2.JPG'); background-size: cover; background-position: center; text-decoration: none;">
-                <div class="slide-content">
-                    <h2 style="color: #ffffff !important;">Meistermannschaft & Teamgeist</h2>
-                    <p style="color: #ffffff !important;">Der erfolgreiche Weg des FC Stattegg in der Gebietsliga.</p>
-                </div>
-            </a>
-
-            <!-- Folie 3 -->
-            <a href="webshop.html" class="slide" style="background-image: url('images/slide3.JPG'); background-size: cover; background-position: center; text-decoration: none;">
-                <div class="slide-content">
-                    <h2 style="color: #ffffff !important;">Dein Look für den FC Stattegg!</h2>
-                    <p style="color: #ffffff !important;">Entdeck eunseren Vereins-Fanshop und trage die Farben unseres Herzens mit Stolz.</p>
-                </div>
-            </a>
-
-            <!-- Folie 4 -->
-            <a href="index.html" class="slide" style="background-image: url('images/slide4.JPG'); background-size: cover; background-position: center; text-decoration: none;">
-                <div class="slide-content">
-                    <h2 style="color: #ffffff !important;">Trainingsbetrieb & Sportplatz</h2>
-                    <p style="color: #ffffff !important;">Dienstag & Donnerstag ab 18:30 Uhr am Sportplatz am Wiesengrund.</p>
-                </div>
-            </a>
-
-            <!-- Steuerungs-Buttons und Punkte -->
-            <button class="slideshow-btn prev-btn">&#10094;</button>
-            <button class="slideshow-btn next-btn">&#10095;</button>
-
-            <div class="slideshow-dots">
-                <span class="dot active"></span>
-                <span class="dot"></span>
-                <span class="dot"></span>
-                <span class="dot"></span>
+        <!-- Slideshow (Wird dynamisch über slideshow.csv geladen) -->
+        <div class="hero-slideshow" id="hero-slideshow-container">
+            <div style="padding: 20px; text-align: center; color: var(--text-muted); display: flex; align-items: center; justify-content: center; height: 100%;">
+                Lade Slideshow...
             </div>
         </div>
         
-    <div class="sponsors-sidebar">
-    <h3>Unsere Sponsoren</h3>
-    
-    <a href="sponsoren.html" class="sidebar-sponsor" title="GRAWE">
-        <img src="images/Logo_GRAWE.jpg" alt="Grawe">
-    </a>
-    
-    <a href="sponsoren.html" class="sidebar-sponsor" title="Raiffeisen Meine Bank">
-        <img src="images/raika-logo.jpg" alt="Meine Raiffeisenbank">
-    </a>
-    
-    <a href="sponsoren.html" class="sidebar-sponsor" title="Unser Stattegg">
-        <img src="images/stattegg_gemeinde_logo.jpg" alt="Unser Stattegg">
-    </a>
+        <div class="sponsors-sidebar">
+            <h3>Unsere Sponsoren</h3>
+            <a href="sponsoren.html" class="sidebar-sponsor" title="GRAWE">
+                <img src="images/Logo_GRAWE.jpg" alt="Grawe">
+            </a>
+            <a href="sponsoren.html" class="sidebar-sponsor" title="Raiffeisen Meine Bank">
+                <img src="images/raika-logo.jpg" alt="Meine Raiffeisenbank">
+            </a>
+            <a href="sponsoren.html" class="sidebar-sponsor" title="Unser Stattegg">
+                <img src="images/stattegg_gemeinde_logo.jpg" alt="Unser Stattegg">
+            </a>
 
-    
-    <!-- Mini-Slideshow für die nächsten 3 Heimspiele -->
-    <div style="background: var(--white); border-radius: 12px; padding: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border-top: 4px solid var(--primary-green); margin-top: 20px;">
-    <h3 style="font-size: 1.1rem; color: var(--text-dark); margin-bottom: 12px; border-bottom: 2px solid #E2E8F0; padding-bottom: 8px;">Nächste Heimspiele</h3>
-    
-    <!-- Hier werden die nächsten 3 Spiele aus der Excel dynamisch eingefügt -->
-    <div id="next-games-container" style="position: relative; height: 130px; border-radius: 8px; overflow: hidden; background: var(--bg-light); border: 1px solid var(--border-color);">
-        <div style="padding: 15px; text-align: center; color: var(--text-muted); font-size: 0.9rem; display: flex; align-items: center; justify-content: center; height: 100%;">
-            Lade Spielplan...
-        </div>
+            <!-- Mini-Slideshow für die nächsten 3 Heimspiele -->
+            <div style="background: var(--white); border-radius: 12px; padding: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border-top: 4px solid var(--primary-green); margin-top: 20px;">
+                <h3 style="font-size: 1.1rem; color: var(--text-dark); margin-bottom: 12px; border-bottom: 2px solid #E2E8F0; padding-bottom: 8px;">Nächste Heimspiele</h3>
+                <div id="next-games-container" style="position: relative; height: 130px; border-radius: 8px; overflow: hidden; background: var(--bg-light); border: 1px solid var(--border-color);">
+                    <div style="padding: 15px; text-align: center; color: var(--text-muted); font-size: 0.9rem; display: flex; align-items: center; justify-content: center; height: 100%;">
+                        Lade Spielplan...
+                    </div>
+                </div>
+            </div>
+        </div>  
     </div>
-    </div>
-    </div>  
-</div>
+
     <div class="container">
         <h3 class="section-title">Vereinsleitbild</h3>
         <div class="grid-3">
@@ -543,25 +384,69 @@ footer p {
         </div>
     </div>
 
-    
-
-<!-- FOOTER IN GRÜN -->
-<footer style="background: var(--primary-green); color: var(--white); padding: 40px 20px; margin-top: 50px; text-align: center; border-top: 4px solid #065F46;">
-    <div style="max-width: 1200px; margin: 0 auto;">
-        <p style="margin-bottom: 15px; font-weight: bold; font-size: 1.1rem;">FC Stattegg &bull; Sportplatz am Wiesengrund</p>
-        <p style="color: rgba(255, 255, 255, 0.85); font-size: 0.9rem; margin-bottom: 20px;">Gemeinsam für den Fußballsport in Graz-Stattegg.</p>
-        
-        <!-- Footer Links inkl. Impressum -->
-        <div style="margin-bottom: 20px;">
-            <a href="impressum.html" style="color: var(--white); text-decoration: none; margin: 0 15px; font-size: 0.9rem; font-weight: bold; text-decoration: underline;">Impressum</a>
+    <!-- FOOTER -->
+    <footer style="background: var(--primary-green); color: var(--white); padding: 40px 20px; margin-top: 50px; text-align: center; border-top: 4px solid #065F46;">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <p style="margin-bottom: 15px; font-weight: bold; font-size: 1.1rem;">FC Stattegg &bull; Sportplatz am Wiesengrund</p>
+            <p style="color: rgba(255, 255, 255, 0.85); font-size: 0.9rem; margin-bottom: 20px;">Gemeinsam für den Fußballsport in Graz-Stattegg.</p>
+            <div style="margin-bottom: 20px;">
+                <a href="impressum.html" style="color: var(--white); text-decoration: none; margin: 0 15px; font-size: 0.9rem; font-weight: bold; text-decoration: underline;">Impressum</a>
+            </div>
+            <p style="color: rgba(255, 255, 255, 0.7); font-size: 0.8rem;">&copy; 2026 FC Stattegg. Alle Rechte vorbehalten.</p>
         </div>
-
-        <p style="color: rgba(255, 255, 255, 0.7); font-size: 0.8rem;">&copy; 2026 FC Stattegg. Alle Rechte vorbehalten.</p>
-    </div>
-</footer>
+    </footer>
 
     <script>
+        // 1. Slideshow aus slideshow.csv laden
         document.addEventListener("DOMContentLoaded", function() {
+            fetch('slideshow.csv')
+                .then(response => response.text())
+                .then(data => {
+                    const rows = data.split('\n').map(r => r.includes(';') ? r.split(';') : r.split(','));
+                    const headers = rows[0].map(h => h.trim().replace(/^["']|["']$/g, ''));
+                    
+                    const slides = [];
+                    for (let i = 1; i < rows.length; i++) {
+                        if (rows[i].length >= headers.length) {
+                            const slide = {};
+                            headers.forEach((h, index) => {
+                                slide[h] = rows[i][index] ? rows[i][index].trim().replace(/^["']|["']$/g, '') : '';
+                            });
+                            slides.push(slide);
+                        }
+                    }
+
+                    if (slides.length > 0) {
+                        const container = document.getElementById('hero-slideshow-container');
+                        let slidesHtml = '';
+                        let dotsHtml = '';
+
+                        slides.forEach((s, idx) => {
+                            slidesHtml += `
+                                <a href="${s.Link}" class="slide ${idx === 0 ? 'active' : ''}" style="background-image: url('${s.Bild}'); background-size: cover; background-position: center; text-decoration: none;">
+                                    <div class="slide-content">
+                                        <h2 style="color: #ffffff !important;">${s.Titel}</h2>
+                                        <p style="color: #ffffff !important;">${s.Text}</p>
+                                    </div>
+                                </a>
+                            `;
+                            dotsHtml += `<span class="dot ${idx === 0 ? 'active' : ''}"></span>`;
+                        });
+
+                        slidesHtml += `
+                            <button class="slideshow-btn prev-btn">&#10094;</button>
+                            <button class="slideshow-btn next-btn">&#10095;</button>
+                            <div class="slideshow-dots">${dotsHtml}</div>
+                        `;
+
+                        container.innerHTML = slidesHtml;
+                        initSlideshow();
+                    }
+                })
+                .catch(err => console.error("Fehler beim Laden von slideshow.csv:", err));
+        });
+
+        function initSlideshow() {
             var slides = document.querySelectorAll('.slide');
             var dots = document.querySelectorAll('.dot');
             var currentSlide = 0;
@@ -608,97 +493,72 @@ footer p {
             }
 
             startTimer();
-        });
-        // Mini-Slideshow für die nächsten Heimspiele
-    document.addEventListener("DOMContentLoaded", function() {
-        var miniSlides = document.querySelectorAll('.mini-slide');
-        var currentMini = 0;
-        
-        if (miniSlides.length > 0) {
-            miniSlides[0].style.opacity = '1';
-            
-            setInterval(function() {
-                miniSlides[currentMini].style.opacity = '0';
-                currentMini = (currentMini + 1) % miniSlides.length;
-                miniSlides[currentMini].style.opacity = '1';
-            }, 4000); // Wechselt alle 4 Sekunden
         }
-    });
-    document.addEventListener("DOMContentLoaded", function() {
-    // CSV-Datei laden
-    fetch('spiele.csv')
-        .then(response => response.text())
-        .then(data => {
-            // Zeilen aufteilen (unterstützt Semikolon- und Komma-Trennung)
-            const rows = data.split('\n').map(row => row.includes(';') ? row.split(';') : row.split(','));
-            const headers = rows[0].map(h => h.trim().replace(/^["']|["']$/g, ''));
-            
-            const games = [];
-            for (let i = 1; i < rows.length; i++) {
-                if (rows[i].length >= headers.length) {
-                    const game = {};
-                    headers.forEach((h, index) => {
-                        game[h] = rows[i][index] ? rows[i][index].trim().replace(/^["']|["']$/g, '') : '';
+
+        // 2. Mini-Slideshow für die nächsten Heimspiele (aus spiele.csv)
+        document.addEventListener("DOMContentLoaded", function() {
+            fetch('spiele.csv')
+                .then(response => response.text())
+                .then(data => {
+                    const rows = data.split('\n').map(row => row.includes(';') ? row.split(';') : row.split(','));
+                    const headers = rows[0].map(h => h.trim().replace(/^["']|["']$/g, ''));
+                    
+                    const games = [];
+                    for (let i = 1; i < rows.length; i++) {
+                        if (rows[i].length >= headers.length) {
+                            const game = {};
+                            headers.forEach((h, index) => {
+                                game[h] = rows[i][index] ? rows[i][index].trim().replace(/^["']|["']$/g, '') : '';
+                            });
+                            games.push(game);
+                        }
+                    }
+
+                    const today = new Date().toISOString().split('T')[0];
+                    const upcomingGames = games.filter(g => g.Datum && g.Datum >= today);
+                    upcomingGames.sort((a, b) => new Date(a.Datum) - new Date(b.Datum));
+                    const next3 = upcomingGames.slice(0, 3);
+
+                    const container = document.getElementById('next-games-container');
+                    if (next3.length === 0) {
+                        container.innerHTML = '<div style="padding: 15px; text-align: center; color: var(--text-muted); font-size: 0.9rem; display: flex; align-items: center; justify-content: center; height: 100%;">Keine kommenden Spiele eingetragen.</div>';
+                        return;
+                    }
+
+                    let htmlContent = '';
+                    next3.forEach((g, index) => {
+                        htmlContent += `
+                            <div class="mini-slide" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; padding: 15px; display: flex; flex-direction: column; justify-content: center; opacity: ${index === 0 ? '1' : '0'}; transition: opacity 0.8s ease-in-out;">
+                                <span style="font-size: 0.8rem; color: var(--primary-green); font-weight: bold; text-transform: uppercase;">${g.Wettbewerb || 'Spiel'}</span>
+                                <h4 style="font-size: 1rem; color: var(--text-dark); margin: 3px 0;">${g.Heim} vs. ${g.Gast}</h4>
+                                <p style="font-size: 0.85rem; color: var(--text-muted);">${formatDate(g.Datum)} | ${g.Uhrzeit} Uhr</p>
+                                <span style="font-size: 0.75rem; color: var(--text-muted); margin-top: 2px;">${g.Ort || 'Sportplatz am Wiesengrund'}</span>
+                            </div>
+                        `;
                     });
-                    games.push(game);
-                }
+
+                    container.innerHTML = htmlContent;
+
+                    const miniSlides = container.querySelectorAll('.mini-slide');
+                    if (miniSlides.length > 1) {
+                        let currentMini = 0;
+                        setInterval(function() {
+                            miniSlides[currentMini].style.opacity = '0';
+                            currentMini = (currentMini + 1) % miniSlides.length;
+                            miniSlides[currentMini].style.opacity = '1';
+                        }, 4000);
+                    }
+                })
+                .catch(error => {
+                    console.error('Fehler beim Laden des Spielplans:', error);
+                });
+
+            function formatDate(dateStr) {
+                const options = { weekday: 'short', year: 'numeric', month: '2-digit', day: '2-digit' };
+                const date = new Date(dateStr);
+                return date.toLocaleDateString('de-AT', options);
             }
-
-            const today = new Date().toISOString().split('T')[0]; // Heutiges Datum (YYYY-MM-DD)
-
-            // Nur zukünftige Spiele filtern (Datum >= heute)
-            const upcomingGames = games.filter(g => g.Datum && g.Datum >= today);
-
-            // Chronologisch nach Datum sortieren
-            upcomingGames.sort((a, b) => new Date(a.Datum) - new Date(b.Datum));
-
-            // Die nächsten 3 Spiele auswählen
-            const next3 = upcomingGames.slice(0, 3);
-
-            const container = document.getElementById('next-games-container');
-            if (next3.length === 0) {
-                container.innerHTML = '<div style="padding: 15px; text-align: center; color: var(--text-muted); font-size: 0.9rem; display: flex; align-items: center; justify-content: center; height: 100%;">Keine kommenden Spiele eingetragen.</div>';
-                return;
-            }
-
-            // HTML für die Mini-Slideshow generieren
-            let htmlContent = '';
-            next3.forEach((g, index) => {
-                htmlContent += `
-                    <div class="mini-slide" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; padding: 15px; display: flex; flex-direction: column; justify-content: center; opacity: ${index === 0 ? '1' : '0'}; transition: opacity 0.8s ease-in-out;">
-                        <span style="font-size: 0.8rem; color: var(--primary-green); font-weight: bold; text-transform: uppercase;">${g.Wettbewerb || 'Spiel'}</span>
-                        <h4 style="font-size: 1rem; color: var(--text-dark); margin: 3px 0;">${g.Heim} vs. ${g.Gast}</h4>
-                        <p style="font-size: 0.85rem; color: var(--text-muted);">${formatDate(g.Datum)} | ${g.Uhrzeit} Uhr</p>
-                        <span style="font-size: 0.75rem; color: var(--text-muted); margin-top: 2px;">${g.Ort || 'Sportplatz am Wiesengrund'}</span>
-                    </div>
-                `;
-            });
-
-            container.innerHTML = htmlContent;
-
-            // Slideshow-Logik (wechselt alle 4 Sekunden)
-            const miniSlides = container.querySelectorAll('.mini-slide');
-            if (miniSlides.length > 1) {
-                let currentMini = 0;
-                setInterval(function() {
-                    miniSlides[currentMini].style.opacity = '0';
-                    currentMini = (currentMini + 1) % miniSlides.length;
-                    miniSlides[currentMini].style.opacity = '1';
-                }, 4000);
-            }
-        })
-        .catch(error => {
-            console.error('Fehler beim Laden des Spielplans:', error);
         });
-
-    // Hilfsfunktion für schönes deutsches Datumsformat
-    function formatDate(dateStr) {
-        const options = { weekday: 'short', year: 'numeric', month: '2-digit', day: '2-digit' };
-        const date = new Date(dateStr);
-        return date.toLocaleDateString('de-AT', options);
-    }
-});
     </script>
-
 </body>
 </html>
