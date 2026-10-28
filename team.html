@@ -46,7 +46,7 @@
     <!-- JavaScript zum Laden der CSV und Generieren der Karten -->
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            fetch('team.csv')
+            fetch('data/team.csv')
                 .then(response => {
                     if (!response.ok) {
                         throw new Error('Netzwerkfehler beim Laden der CSV-Datei');
