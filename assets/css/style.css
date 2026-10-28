@@ -248,6 +248,7 @@ tr:hover { background-color: var(--row-hover); }
     background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.2) 60%, rgba(0,0,0,0.1) 100%);
     z-index: 1;
 }
+.slide { background-color: var(--accent-green); }
 .slide-content { position: relative; z-index: 2; padding: 30px; width: 100%; }
 .slide-content h2 { font-size: 2.2rem; margin-bottom: 8px; color: var(--white); text-shadow: 0 2px 4px rgba(0,0,0,0.3); }
 .slide-content p  { font-size: 1.1rem; color: var(--white); opacity: 0.95; }
@@ -332,8 +333,10 @@ tr:hover { background-color: var(--row-hover); }
     transition: opacity 0.3s ease-in-out;
     padding: 20px;
     text-align: center;
+    pointer-events: none;
 }
-.team-avatar:hover .team-overlay { opacity: 1; }
+.team-avatar:hover .team-overlay,
+.team-avatar:focus-within .team-overlay { opacity: 1; pointer-events: auto; }
 .contact-info p { margin: 8px 0; font-size: 0.95rem; color: var(--white); }
 .contact-info a { color: var(--white); text-decoration: underline; }
 .contact-info a:hover { color: var(--row-border); }
@@ -342,7 +345,9 @@ tr:hover { background-color: var(--row-hover); }
 .team-grid--youth .team-card { border-radius: var(--radius); transition: transform 0.2s, box-shadow 0.2s; }
 .team-grid--youth .team-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); }
 .team-grid--youth .team-avatar {
-    height: 150px;
+    height: auto;
+    aspect-ratio: 4 / 3;
+    cursor: zoom-in;
     border-radius: 6px;
     border: 1px solid var(--border-color);
     display: flex;
@@ -603,3 +608,42 @@ a.sponsor-card { text-decoration: none; color: inherit; }
 .legal a { color: var(--primary-green); }
 .sponsor-list { display: flex; flex-direction: column; gap: 12px; }
 .sidebar-sponsor, .sponsor-logo-container { position: relative; }
+
+/* 14 Nachwuchs: Foto vergrößern (Lightbox) + Trainer-Kontakt ---------------- */
+.team-grid--youth .team-avatar:focus-visible { outline: 3px solid var(--primary-green); outline-offset: 2px; }
+.team-grid--youth .team-overlay { flex-direction: column; gap: 10px; }
+.team-overlay .trainer { margin: 0; }
+.team-overlay .trainer + .trainer { margin-top: 10px; }
+.team-overlay .trainer strong { display: block; }
+.team-overlay .trainer a { display: block; color: var(--white); text-decoration: underline; font-size: 0.9rem; }
+
+dialog.lightbox {
+    border: none;
+    background: transparent;
+    padding: 0;
+    max-width: 96vw;
+    max-height: 96vh;
+    overflow: visible;
+    margin: auto;
+    text-align: center;
+}
+dialog.lightbox::backdrop { background: rgba(0,0,0,0.85); }
+.lightbox img { max-width: 94vw; max-height: 78vh; border-radius: var(--radius); display: block; margin: 0 auto; background: var(--white); }
+.lightbox figcaption { color: var(--white); margin-top: 12px; font-size: 0.95rem; line-height: 1.5; }
+.lightbox figcaption strong { font-size: 1.15rem; }
+.lightbox figcaption a { color: var(--white); text-decoration: underline; margin: 0 6px; white-space: nowrap; }
+.lightbox-close {
+    position: absolute;
+    top: -14px; right: -14px;
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    border: none;
+    background: var(--white);
+    color: var(--text-dark);
+    font-size: 1.4rem;
+    line-height: 1;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+}
+.lightbox-close:hover { background: var(--row-hover); }
+@media (max-width: 768px) { .lightbox-close { top: 6px; right: 6px; } }
