@@ -3,30 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fanartikel-Bestellformular | FC Stattegg</title>
+    <title>FC Stattegg - Fanartikel-Bestellung</title>
+    <link rel="icon" type="image/png" href="images/Logo.png">
     <link rel="stylesheet" href="assets/css/style.css">
+    <script src="assets/js/site.js" defer></script>
+    <script src="assets/js/shop.js" defer></script>
 </head>
 <body>
-
-    <header>
-        <div class="nav-container">
-            <div class="logo-area">
-                <img src="images/Logo.png" alt="FC Stattegg Logo">
-                <h1>FC STATTEGG</h1>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="index.html">Homepage</a></li>
-                    <li><a href="team.html">Team</a></li>
-                    <li><a href="km1.html">KM I</a></li>
-                    <li><a href="km2.html">KM II</a></li>
-                    <li><a href="nachwuchs.html">Nachwuchs</a></li>
-                    <li><a href="downloads.html">Downloads</a></li>
-                    <li><a href="sponsoren.html">Sponsoren</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+    <div id="site-header"></div>
 
     <div class="page-header">
         <h2>Fanartikel-Bestellung</h2>
@@ -37,15 +21,20 @@
         <div class="card card--form">
             <p class="subtitle">Wähle deine gewünschten Artikel aus. Du kannst mehrere Artikel gleichzeitig in den Mengen eintragen.</p>
 
-            <!-- 
-                WICHTIG FÜR E-MAILS (an euch UND den Besteller):
-                Nutze z.B. Formspree (formspree.io). Formspree schickt die Bestellung an eure hinterlegte Mail-Adresse.
-                Über die Auto-Responder-Funktion von Formspree (oder den Service) wird automatisch eine Bestätigung an die E-Mail-Adresse des Bestellers geschickt.
+            <!--
+                BESTELLUNG PER E-MAIL (Formspree, formspree.io):
+                1. Dort ein Formular anlegen und die Form-ID kopieren.
+                2. DEINE-FORM-ID unten durch die echte ID ersetzen.
+                   Solange der Platzhalter drinsteht, blockiert shop.js das Absenden.
+                3. Die Bestätigung an den Besteller läuft über die Auto-Responder-Funktion
+                   von Formspree (nutzt das Feld "email").
+                Die Bestellung kommt als Zusammenfassung ("Bestellung") und Gesamtsumme an.
+                Artikel und Preise stehen in data/artikel.csv.
             -->
             <form action="https://formspree.io/f/DEINE-FORM-ID" method="POST" id="orderForm">
-                
+
                 <h2 class="section-title section-title--sm">1. Angaben zur Person</h2>
-                
+
                 <div class="row">
                     <div class="col form-group">
                         <label for="spieler">Name Spieler/in *</label>
@@ -61,15 +50,7 @@
                     <div class="col form-group">
                         <label for="mannschaft">Mannschaft *</label>
                         <select id="mannschaft" name="mannschaft" required>
-                            <option value="" disabled selected>Bitte Mannschaft wählen...</option>
-                            <option value="Kampfmannschaft">Kampfmannschaft</option>
-                            <option value="U16">U16</option>
-                            <option value="U14">U14</option>
-                            <option value="U12">U12</option>
-                            <option value="U10">U10</option>
-                            <option value="U8">U8</option>
-                            <option value="U7">U7 / Bambini</option>
-                            <option value="Altherren / Sonstige">Altherren / Sonstige / Fan</option>
+                            <option value="" disabled selected>Lade Mannschaften...</option>
                         </select>
                     </div>
                     <div class="col form-group">
@@ -84,292 +65,34 @@
                 </div>
 
                 <h2 class="section-title section-title--sm">2. Artikel auswählen</h2>
-                
+
                 <table class="article-table">
                     <thead>
-                        <tr>
-                            <th>Artikel</th>
-                            <th>Preis</th>
-                            <th>Größe</th>
-                            <th>Anzahl</th>
-                        </tr>
+                        <tr><th>Artikel</th><th>Preis</th><th>Größe</th><th>Anzahl</th></tr>
                     </thead>
-                    <tbody>
-                        <!-- 1. Turnbeutel -->
-                        <tr>
-                            <td>Turnbeutel</td>
-                            <td>€ 21,00</td>
-                            <td>-</td>
-                            <td><input type="number" name="Turnbeutel_Anzahl" min="0" value="0" data-price="21.00" class="qty-input"></td>
-                        </tr>
-                        <!-- 2. Body -->
-                        <tr>
-                            <td>Body</td>
-                            <td>€ 19,00</td>
-                            <td>
-                                <select name="Body_Groesse">
-                                    <option value="50/56">50/56</option>
-                                    <option value="62/68">62/68</option>
-                                    <option value="74/80">74/80</option>
-                                    <option value="86/92">86/92</option>
-                                </select>
-                            </td>
-                            <td><input type="number" name="Body_Anzahl" min="0" value="0" data-price="19.00" class="qty-input"></td>
-                        </tr>
-                        <!-- 3. Kappe Kinder -->
-                        <tr>
-                            <td>Kappe Kinder</td>
-                            <td>€ 14,00</td>
-                            <td>-</td>
-                            <td><input type="number" name="Kappe_Kinder_Anzahl" min="0" value="0" data-price="14.00" class="qty-input"></td>
-                        </tr>
-                        <!-- 4. Kappe -->
-                        <tr>
-                            <td>Kappe</td>
-                            <td>€ 16,50</td>
-                            <td>-</td>
-                            <td><input type="number" name="Kappe_Anzahl" min="0" value="0" data-price="16.50" class="qty-input"></td>
-                        </tr>
-                        <!-- 5. Hoodie Kinder -->
-                        <tr>
-                            <td>Hoodie Kinder</td>
-                            <td>€ 28,00</td>
-                            <td>
-                                <select name="Hoodie_Kinder_Groesse">
-                                    <option value="116">116</option>
-                                    <option value="128">128</option>
-                                    <option value="140">140</option>
-                                    <option value="152">152</option>
-                                    <option value="164">164</option>
-                                </select>
-                            </td>
-                            <td><input type="number" name="Hoodie_Kinder_Anzahl" min="0" value="0" data-price="28.00" class="qty-input"></td>
-                        </tr>
-                        <!-- 6. Polo Kinder -->
-                        <tr>
-                            <td>Polo Kinder</td>
-                            <td>€ 23,00</td>
-                            <td>
-                                <select name="Polo_Kinder_Groesse">
-                                    <option value="104">104</option>
-                                    <option value="116">116</option>
-                                    <option value="128">128</option>
-                                    <option value="140">140</option>
-                                    <option value="152">152</option>
-                                    <option value="164">164</option>
-                                </select>
-                            </td>
-                            <td><input type="number" name="Polo_Kinder_Anzahl" min="0" value="0" data-price="23.00" class="qty-input"></td>
-                        </tr>
-                        <!-- 7. Tshirt Kinder -->
-                        <tr>
-                            <td>T-Shirt Kinder</td>
-                            <td>€ 19,00</td>
-                            <td>
-                                <select name="Tshirt_Kinder_Groesse">
-                                    <option value="3/4 J">3/4 J</option>
-                                    <option value="5/6 J">5/6 J</option>
-                                    <option value="7/8 J">7/8 J</option>
-                                    <option value="9/10 J">9/10 J</option>
-                                    <option value="11/12 J">11/12 J</option>
-                                </select>
-                            </td>
-                            <td><input type="number" name="Tshirt_Kinder_Anzahl" min="0" value="0" data-price="19.00" class="qty-input"></td>
-                        </tr>
-                        <!-- 8. Tanktop Damen -->
-                        <tr>
-                            <td>Tanktop Damen</td>
-                            <td>€ 16,50</td>
-                            <td>
-                                <select name="Tanktop_Damen_Groesse">
-                                    <option value="XS">XS</option>
-                                    <option value="S">S</option>
-                                    <option value="M">M</option>
-                                    <option value="L">L</option>
-                                    <option value="XL">XL</option>
-                                    <option value="XXL">XXL</option>
-                                </select>
-                            </td>
-                            <td><input type="number" name="Tanktop_Damen_Anzahl" min="0" value="0" data-price="16.50" class="qty-input"></td>
-                        </tr>
-                        <!-- 9. Tanktop Premium Damen -->
-                        <tr>
-                            <td>Tanktop Premium Damen</td>
-                            <td>€ 22,00</td>
-                            <td>
-                                <select name="Tanktop_Premium_Damen_Groesse">
-                                    <option value="XS">XS</option>
-                                    <option value="S">S</option>
-                                    <option value="M">M</option>
-                                    <option value="L">L</option>
-                                    <option value="XL">XL</option>
-                                    <option value="XXL">XXL</option>
-                                    <option value="3XL">3XL</option>
-                                </select>
-                            </td>
-                            <td><input type="number" name="Tanktop_Premium_Damen_Anzahl" min="0" value="0" data-price="22.00" class="qty-input"></td>
-                        </tr>
-                        <!-- 10. Tanktop -->
-                        <tr>
-                            <td>Tanktop (Unisex)</td>
-                            <td>€ 18,00</td>
-                            <td>
-                                <select name="Tanktop_Groesse">
-                                    <option value="XS">XS</option>
-                                    <option value="S">S</option>
-                                    <option value="M">M</option>
-                                    <option value="L">L</option>
-                                    <option value="XL">XL</option>
-                                    <option value="XXL">XXL</option>
-                                    <option value="3XL">3XL</option>
-                                </select>
-                            </td>
-                            <td><input type="number" name="Tanktop_Anzahl" min="0" value="0" data-price="18.00" class="qty-input"></td>
-                        </tr>
-                        <!-- 11. Hoodie -->
-                        <tr>
-                            <td>Hoodie</td>
-                            <td>€ 55,00</td>
-                            <td>
-                                <select name="Hoodie_Groesse">
-                                    <option value="XS">XS</option>
-                                    <option value="S">S</option>
-                                    <option value="M">M</option>
-                                    <option value="L">L</option>
-                                    <option value="XL">XL</option>
-                                    <option value="XXL">XXL</option>
-                                    <option value="3XL">3XL</option>
-                                </select>
-                            </td>
-                            <td><input type="number" name="Hoodie_Anzahl" min="0" value="0" data-price="55.00" class="qty-input"></td>
-                        </tr>
-                        <!-- 12. Hoodie dick -->
-                        <tr>
-                            <td>Hoodie dick</td>
-                            <td>€ 72,00</td>
-                            <td>
-                                <select name="Hoodie_dick_Groesse">
-                                    <option value="XS">XS</option>
-                                    <option value="S">S</option>
-                                    <option value="M">M</option>
-                                    <option value="L">L</option>
-                                    <option value="XL">XL</option>
-                                    <option value="XXL">XXL</option>
-                                    <option value="3XL">3XL</option>
-                                </select>
-                            </td>
-                            <td><input type="number" name="Hoodie_dick_Anzahl" min="0" value="0" data-price="72.00" class="qty-input"></td>
-                        </tr>
-                        <!-- 13. Weste -->
-                        <tr>
-                            <td>Weste</td>
-                            <td>€ 56,00</td>
-                            <td>
-                                <select name="Weste_Groesse">
-                                    <option value="XS">XS</option>
-                                    <option value="S">S</option>
-                                    <option value="M">M</option>
-                                    <option value="L">L</option>
-                                    <option value="XL">XL</option>
-                                    <option value="XXL">XXL</option>
-                                    <option value="3XL">3XL</option>
-                                </select>
-                            </td>
-                            <td><input type="number" name="Weste_Anzahl" min="0" value="0" data-price="56.00" class="qty-input"></td>
-                        </tr>
-                        <!-- 14. Tshirt langarm -->
-                        <tr>
-                            <td>T-Shirt langarm</td>
-                            <td>€ 25,00</td>
-                            <td>
-                                <select name="Tshirt_langarm_Groesse">
-                                    <option value="XS">XS</option>
-                                    <option value="S">S</option>
-                                    <option value="M">M</option>
-                                    <option value="L">L</option>
-                                    <option value="XL">XL</option>
-                                    <option value="XXL">XXL</option>
-                                    <option value="3XL">3XL</option>
-                                </select>
-                            </td>
-                            <td><input type="number" name="Tshirt_langarm_Anzahl" min="0" value="0" data-price="25.00" class="qty-input"></td>
-                        </tr>
-                        <!-- 15. Polo -->
-                        <tr>
-                            <td>Polo</td>
-                            <td>€ 35,00</td>
-                            <td>
-                                <select name="Polo_Groesse">
-                                    <option value="S">S</option>
-                                    <option value="M">M</option>
-                                    <option value="L">L</option>
-                                    <option value="XL">XL</option>
-                                    <option value="XXL">XXL</option>
-                                </select>
-                            </td>
-                            <td><input type="number" name="Polo_Anzahl" min="0" value="0" data-price="35.00" class="qty-input"></td>
-                        </tr>
-                        <!-- 16. Tshirt -->
-                        <tr>
-                            <td>T-Shirt</td>
-                            <td>€ 21,00</td>
-                            <td>
-                                <select name="Tshirt_Groesse">
-                                    <option value="XS">XS</option>
-                                    <option value="S">S</option>
-                                    <option value="M">M</option>
-                                    <option value="L">L</option>
-                                    <option value="XL">XL</option>
-                                    <option value="XXL">XXL</option>
-                                    <option value="3XL">3XL</option>
-                                </select>
-                            </td>
-                            <td><input type="number" name="Tshirt_Anzahl" min="0" value="0" data-price="21.00" class="qty-input"></td>
-                        </tr>
+                    <tbody id="article-rows">
+                        <tr><td colspan="4" class="text-center text-muted">Lade Artikel...</td></tr>
                     </tbody>
                 </table>
 
-                <!-- Gesamtsummen-Anzeige -->
                 <div class="total-box">
                     <span>Gesamtsumme:</span>
                     <span id="totalPrice">€ 0,00</span>
                 </div>
 
+                <input type="hidden" name="Bestellung" id="orderSummary">
+                <input type="hidden" name="Gesamtsumme" id="orderTotal">
+
                 <div class="form-group checkbox-group">
                     <input type="checkbox" id="datenschutz" name="datenschutz" required>
-                    <label for="datenschutz">Ich stimme zu, dass meine Daten zur Abwicklung der Bestellung verarbeitet werden. *</label>
+                    <label for="datenschutz">Ich habe die <a href="datenschutz.html" target="_blank">Datenschutzerklärung</a> gelesen und stimme zu, dass meine Daten zur Abwicklung der Bestellung verarbeitet werden. *</label>
                 </div>
 
                 <button type="submit" class="btn">Verbindlich bestellen</button>
-
             </form>
         </div>
     </div>
 
-    <footer>
-        <p>&copy; 2026 FC Stattegg - am Wiesengrund 6 - 8046 Graz Stattegg</p>
-        <p class="footer-small"><a href="impressum.html">Impressum</a></p>
-    </footer>
-
-    <!-- JavaScript für automatische Preisanzeige -->
-    <script>
-        const qtyInputs = document.querySelectorAll('.qty-input');
-        const totalPriceElement = document.getElementById('totalPrice');
-
-        function updateTotalPrice() {
-            let total = 0;
-            qtyInputs.forEach(input => {
-                const qty = parseInt(input.value) || 0;
-                const price = parseFloat(input.getAttribute('data-price')) || 0;
-                total += qty * price;
-            });
-            totalPriceElement.textContent = '€ ' + total.toFixed(2).replace('.', ',');
-        }
-
-        qtyInputs.forEach(input => {
-            input.addEventListener('input', updateTotalPrice);
-        });
-    </script>
-
+    <div id="site-footer"></div>
 </body>
 </html>

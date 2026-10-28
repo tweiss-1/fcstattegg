@@ -5,28 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sponsoren & Partner - FC Stattegg</title>
     <link rel="stylesheet" href="assets/css/style.css">
+    <script src="assets/js/site.js" defer></script>
+    <script src="assets/js/sponsoren.js" defer></script>
 </head>
 <body>
 
-    <header>
-        <div class="nav-container">
-            <div class="logo-area">
-                <img src="images/Logo.png" alt="FC Stattegg Logo">
-                <h1>FC STATTEGG</h1>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="index.html">Homepage</a></li>
-                    <li><a href="team.html">Team</a></li>
-                    <li><a href="km1.html">KM I</a></li>
-                    <li><a href="km2.html">KM II</a></li>
-                    <li><a href="nachwuchs.html">Nachwuchs</a></li>
-                    <li><a href="downloads.html">Downloads</a></li>
-                    <li><a href="sponsoren.html" class="active">Sponsoren</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+    <div id="site-header"></div>
 
     <div class="page-header">
         <h2>Sponsoren & Partner</h2>
@@ -41,115 +25,12 @@
 
         <h3 class="section-title">Unsere Partner</h3>
 
-        <div class="sponsor-grid">
-            
-            <div class="sponsor-card">
-                <div class="sponsor-logo-container"><img src="images/sponsoren/stattegg.png" alt="Unser Stattegg"></div>
-                <h4>Unser Stattegg</h4>
-            </div>
-
-            <div class="sponsor-card">
-                <div class="sponsor-logo-container"><img src="images/sponsoren/raika.png" alt="Meine Raiffeisenbank"></div>
-                <h4>Meine Raiffeisenbank</h4>
-            </div>
-
-            <div class="sponsor-card">
-                <div class="sponsor-logo-container"><img src="images/sponsoren/grawe.png" alt="Grawe"></div>
-                <h4>Grawe</h4>
-            </div>
-
-            <div class="sponsor-card">
-                <div class="sponsor-logo-container"><img src="images/sponsoren/seidler.png" alt="Seidler"></div>
-                <h4>Seidler</h4>
-            </div>
-
-            <div class="sponsor-card">
-                <div class="sponsor-logo-container"><img src="images/sponsoren/sport_union.png" alt="Sport Union"></div>
-                <h4>Sport Union</h4>
-            </div>
-
-            <div class="sponsor-card">
-                <div class="sponsor-logo-container"><img src="images/sponsoren/achleitner.png" alt="Achleitner"></div>
-                <h4>Achleitner</h4>
-            </div>
-
-            <div class="sponsor-card">
-                <div class="sponsor-logo-container"><img src="images/sponsoren/dworschak.png" alt="Dworschak"></div>
-                <h4>Dworschak</h4>
-            </div>
-
-            <div class="sponsor-card">
-                <div class="sponsor-logo-container"><img src="images/sponsoren/ledolter.png" alt="Ledolter"></div>
-                <h4>Ledolter</h4>
-            </div>
-
-            <div class="sponsor-card">
-                <div class="sponsor-logo-container"><img src="images/sponsoren/pirelli.png" alt="Pirelli"></div>
-                <h4>Pirelli</h4>
-            </div>
-
-            <div class="sponsor-card">
-                <div class="sponsor-logo-container"><img src="images/sponsoren/strauss.png" alt="Strauss"></div>
-                <h4>Strauss</h4>
-            </div>
-
-            <div class="sponsor-card">
-                <div class="sponsor-logo-container"><img src="images/sponsoren/zoetsch.png" alt="Zötsch"></div>
-                <h4>Zötsch</h4>
-            </div>
-
-            <div class="sponsor-card">
-                <div class="sponsor-logo-container"><img src="images/sponsoren/kawea.png" alt="Kawea"></div>
-                <h4>Kawea</h4>
-            </div>
-
-            <div class="sponsor-card">
-                <div class="sponsor-logo-container"><img src="images/sponsoren/il_pelo.png" alt="Il Pelo"></div>
-                <h4>Il Pelo</h4>
-            </div>
-
-            <div class="sponsor-card">
-                <div class="sponsor-logo-container"><img src="images/sponsoren/beta.png" alt="BetaWellness"></div>
-                <h4>BetaWellness</h4>
-            </div>
-
-            <div class="sponsor-card">
-                <div class="sponsor-logo-container"><img src="images/sponsoren/puntigamer.png" alt="Puntigamer"></div>
-                <h4>Puntigamer</h4>
-            </div>
-
-            <div class="sponsor-card">
-                <div class="sponsor-logo-container"><img src="images/sponsoren/kusterer.png" alt="Kusterer"></div>
-                <h4>Kusterer</h4>
-            </div>
-
-            <div class="sponsor-card">
-                <div class="sponsor-logo-container"><img src="images/sponsoren/flowtec.png" alt="Flowtec"></div>
-                <h4>Flowtec</h4>
-            </div>
-
-            <div class="sponsor-card">
-                <div class="sponsor-logo-container"><img src="images/sponsoren/baron_filou.png" alt="Baron Filou"></div>
-                <h4>Baron Filou</h4>
-            </div>
-
-            <div class="sponsor-card">
-                <div class="sponsor-logo-container"><img src="images/sponsoren/admiral.png" alt="Admiral"></div>
-                <h4>Admiral</h4>
-            </div>
-
-            <div class="sponsor-card">
-                <div class="sponsor-logo-container"><img src="images/sponsoren/leihmax.png" alt="Leihmax"></div>
-                <h4>Leihmax</h4>
-            </div>
-
+        <div class="sponsor-grid" id="sponsor-grid">
+            <p class="loading" style="grid-column: 1 / -1;">Lade Partner...</p>
         </div>
     </div>
 
-    <footer>
-        <p>&copy; FC Stattegg - am Wiesengrund 6 - 8046 Graz Stattegg</p>
-        <p style="font-size: 0.8rem; opacity: 0.8; margin-top: 5px;">Offizielle Vereinshomepage</p>
-    </footer>
+    <div id="site-footer"></div>
 
 </body>
 </html>

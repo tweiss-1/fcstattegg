@@ -5,85 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FC Stattegg - Kampfmannschaft II</title>
     <link rel="stylesheet" href="assets/css/style.css">
-
-    <!-- JavaScript zum Laden der km2.csv Kaderliste -->
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            fetch('km2.csv')
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Netzwerkfehler beim Laden von km2.csv');
-                    }
-                    return response.text();
-                })
-                .then(data => {
-                    const rows = data.split('\n').map(row => row.includes(';') ? row.split(';') : row.split(','));
-                    const headers = rows[0].map(h => h.trim().replace(/^["']|["']$/g, ''));
-                    
-                    const tbody = document.getElementById('km2-table-body');
-                    if (!tbody) return;
-                    tbody.innerHTML = '';
-                    
-                    for (let i = 1; i < rows.length; i++) {
-                        if (rows[i].length >= headers.length) {
-                            const rowData = {};
-                            headers.forEach((h, index) => {
-                                rowData[h] = rows[i][index] ? rows[i][index].trim().replace(/^["']|["']$/g, '') : '';
-                            });
-
-                            const fotoVal = rowData['Foto'] || '';
-                            const nummer = rowData['Rueckennummer'] || '';
-                            const name = rowData['Name'] || '';
-                            const position = rowData['Position'] || '';
-
-                            if (!name) continue;
-
-                            let fotoCell = '';
-                            if (fotoVal !== '') {
-                                fotoCell = `<div style="width: 40px; height: 40px; border-radius: 50%; background: #E2E8F0; display: inline-flex; align-items: center; justify-content: center; overflow: hidden;"><img src="${fotoVal}" alt="${name}" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" style="width: 100%; height: 100%; object-fit: cover;"><div style="display: none; width: 100%; height: 100%; align-items: center; justify-content: center; color: var(--text-muted);"><svg fill="currentColor" viewBox="0 0 24 24" width="20" height="20"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg></div></div>`;
-                            } else {
-                                fotoCell = `<div style="width: 40px; height: 40px; border-radius: 50%; background: #E2E8F0; display: inline-flex; align-items: center; justify-content: center; color: var(--text-muted);"><svg fill="currentColor" viewBox="0 0 24 24" width="20" height="20"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg></div>`;
-                            }
-                            
-                            const tr = document.createElement('tr');
-                            tr.innerHTML = `
-                                <td style="text-align: center;">${fotoCell}</td>
-                                <td style="text-align: center; font-weight: 700; color: var(--primary-green);">${nummer !== '' ? nummer : '-'}</td>
-                                <td style="font-weight: 600;">${name}</td>
-                                <td>${position}</td>
-                            `;
-                            tbody.appendChild(tr);
-                        }
-                    }
-                })
-                .catch(err => {
-                    console.error("Fehler beim Laden von km2.csv:", err);
-                    const tbody = document.getElementById('km2-table-body');
-                    if (tbody) tbody.innerHTML = '<tr><td colspan="4" style="text-align: center; color: red;">Fehler beim Laden der Kaderliste.</td></tr>';
-                });
-        });
-    </script>
+    <script src="assets/js/site.js" defer></script>
+    <script src="assets/js/squad.js" defer></script>
 </head>
 <body>
-    <header>
-        <div class="nav-container">
-            <div class="logo-area">
-                <img src="images/Logo.png" alt="FC Stattegg Logo">
-                <h1>FC STATTEGG</h1>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="index.html">Homepage</a></li>
-                    <li><a href="team.html">Team</a></li>
-                    <li><a href="km1.html">KM I</a></li>
-                    <li><a href="km2.html" class="active">KM II</a></li>
-                    <li><a href="nachwuchs.html">Nachwuchs</a></li>
-                    <li><a href="downloads.html">Downloads</a></li>
-                    <li><a href="sponsoren.html">Sponsoren</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+    <div id="site-header"></div>
 
     <div class="page-header">
         <h2>Kampfmannschaft II</h2>
@@ -117,15 +43,15 @@
             <table>
                 <thead>
                     <tr>
-                        <th style="width: 70px; text-align: center;">Foto</th>
-                        <th style="width: 90px; text-align: center;">Nr.</th>
+                        <th class="col-photo">Foto</th>
+                        <th class="col-nr">Nr.</th>
                         <th>Spieler</th>
                         <th>Position / Rolle</th>
                     </tr>
                 </thead>
-                <tbody id="km2-table-body">
+                <tbody id="squad-body" data-csv="data/km2.csv">
                     <tr>
-                        <td colspan="4" style="text-align: center; color: var(--text-muted);">Lade Kaderliste...</td>
+                        <td colspan="4" class="text-center text-muted">Lade Kaderliste...</td>
                     </tr>
                 </tbody>
             </table>
@@ -139,9 +65,6 @@
         </div>
     </div>
 
-    <footer>
-        <p>&copy; FC Stattegg - am Wiesengrund 6 - 8046 Graz Stattegg</p>
-        <p style="font-size: 0.8rem; opacity: 0.8; margin-top: 5px;">Offizielle Vereinshomepage</p>
-    </footer>
+    <div id="site-footer"></div>
 </body>
 </html>
