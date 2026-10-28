@@ -33,37 +33,48 @@
             -->
             <form action="https://formspree.io/f/DEINE-FORM-ID" method="POST" id="orderForm">
 
-                <h2 class="section-title section-title--sm">1. Angaben zur Person</h2>
+                <h2 class="section-title section-title--sm">1. Deine Daten</h2>
 
-                <div class="row">
-                    <div class="col form-group">
-                        <label for="spieler">Name Spieler/in *</label>
-                        <input type="text" id="spieler" name="spieler" required placeholder="Vor- und Nachname">
-                    </div>
-                    <div class="col form-group">
-                        <label for="elternteil">Name Elternteil (bei Jugend)</label>
-                        <input type="text" id="elternteil" name="elternteil" placeholder="Optional">
-                    </div>
-                </div>
+<input type="hidden" name="_subject" value="Neue Fanartikel-Bestellung">
 
-                <div class="row">
-                    <div class="col form-group">
-                        <label for="mannschaft">Mannschaft *</label>
-                        <select id="mannschaft" name="mannschaft" required>
-                            <option value="" disabled selected>Lade Mannschaften...</option>
-                        </select>
-                    </div>
-                    <div class="col form-group">
-                        <label for="email">E-Mail-Adresse (für Bestellbestätigung) *</label>
-                        <input type="email" id="email" name="email" required placeholder="deine.email@example.com">
-                    </div>
-                </div>
+<div class="row">
+    <div class="col form-group">
+        <label for="vorname">Vorname *</label>
+        <input type="text" id="vorname" name="vorname" required autocomplete="given-name">
+    </div>
+    <div class="col form-group">
+        <label for="nachname">Nachname *</label>
+        <input type="text" id="nachname" name="nachname" required autocomplete="family-name">
+    </div>
+</div>
 
-                <div class="form-group">
-                    <label for="telefon">Telefonnummer *</label>
-                    <input type="tel" id="telefon" name="telefon" required placeholder="+43 660 ...">
-                </div>
+<div class="form-group">
+    <label for="anschrift">Anschrift (Straße und Hausnummer) *</label>
+    <input type="text" id="anschrift" name="anschrift" required autocomplete="street-address">
+</div>
 
+<div class="row">
+    <div class="col col--narrow form-group">
+        <label for="plz">PLZ *</label>
+        <input type="text" id="plz" name="plz" required inputmode="numeric" pattern="[0-9]{4,5}"
+               title="Bitte eine 4- oder 5-stellige Postleitzahl eingeben" autocomplete="postal-code">
+    </div>
+    <div class="col form-group">
+        <label for="ort">Ort *</label>
+        <input type="text" id="ort" name="ort" required autocomplete="address-level2">
+    </div>
+</div>
+
+<div class="row">
+    <div class="col form-group">
+        <label for="email">E-Mail-Adresse (für die Bestellbestätigung) *</label>
+        <input type="email" id="email" name="email" required placeholder="deine.email@example.com" autocomplete="email">
+    </div>
+    <div class="col form-group">
+        <label for="telefon">Telefonnummer (optional)</label>
+        <input type="tel" id="telefon" name="telefon" placeholder="+43 660 ..." autocomplete="tel">
+    </div>
+</div>
                 <h2 class="section-title section-title--sm">2. Artikel auswählen</h2>
 
                 <table class="article-table">
