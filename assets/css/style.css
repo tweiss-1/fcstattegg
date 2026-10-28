@@ -440,6 +440,9 @@ input:focus, select:focus {
 
 .row { display: flex; gap: 20px; }
 .col { flex: 1; }
+.col--narrow { flex: 0 0 140px; }
+
+
 
 .article-table { margin-top: 10px; margin-bottom: 20px; box-shadow: none; border-radius: 0; }
 .article-table th { background-color: #E8F5E9; color: var(--accent-green); }
@@ -503,6 +506,7 @@ footer a { color: var(--white); font-weight: bold; text-decoration: underline; m
 }
 @media (max-width: 768px) {
     .row { flex-direction: column; gap: 0; }
+    .col--narrow { flex: 1; }
     .card--form, .legal { padding: 20px; }
     .article-table { display: block; overflow-x: auto; }
     .hero-slideshow { height: 320px; }

@@ -1,25 +1,15 @@
-/* webshop.html – Artikel aus data/artikel.csv (Artikel;Preis;Groessen), Mannschaften aus data/nachwuchs.csv */
+/* webshop.html – Artikel aus data/artikel.csv (Artikel;Preis;Groessen) */
 document.addEventListener('DOMContentLoaded', function () {
     const e = Site.esc;
     const form = document.getElementById('orderForm');
     const tbody = document.getElementById('article-rows');
     const totalEl = document.getElementById('totalPrice');
-    const teamSelect = document.getElementById('mannschaft');
     const PLACEHOLDER_ID = 'DEINE-FORM-ID';
 
     const slug = function (s) { return s.replace(/[^A-Za-z0-9]+/g, '_').replace(/^_+|_+$/g, ''); };
     const toNumber = function (s) { return parseFloat(String(s).replace(',', '.')) || 0; };
     const euro = function (n) { return '€ ' + n.toFixed(2).replace('.', ','); };
 
-    /* Mannschaften */
-    function fillTeams(youth) {
-        const names = ['Kampfmannschaft'].concat(youth, ['Altherren / Sonstige / Fan']);
-        teamSelect.innerHTML = '<option value="" disabled selected>Bitte Mannschaft wählen...</option>' +
-            names.map(function (n) { return '<option value="' + e(n) + '">' + e(n) + '</option>'; }).join('');
-    }
-    Site.loadCSV('data/nachwuchs.csv')
-        .then(function (t) { fillTeams(t.map(function (x) { return x.Mannschaft; }).filter(Boolean)); })
-        .catch(function () { fillTeams([]); });
 
     /* Artikel */
     function qtyInputs() { return tbody.querySelectorAll('.qty-input'); }
