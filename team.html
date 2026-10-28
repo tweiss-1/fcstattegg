@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FC Stattegg - Team & Funktionäre</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <header>
+        <div class="nav-container">
+            <div class="logo-area">
+                <img src="images/Logo.png" alt="FC Stattegg Logo">
+                <h1>FC STATTEGG</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Homepage</a></li>
+                    <li><a href="team.html" class="active">Team</a></li>
+                    <li><a href="km1.html">KM I</a></li>
+                    <li><a href="km2.html">KM II</a></li>
+                    <li><a href="nachwuchs.html">Nachwuchs</a></li>
+                    <li><a href="downloads.html">Downloads</a></li>
+                    <li><a href="sponsoren.html" >Sponsoren</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <div class="page-header">
+        <h2>Team</h2>
+        <p>Der Vorstand, Trainer und Betreuer des FC Stattegg</p>
+    </div>
+    <div class="container">
+        <div class="card card--intro">
+            <h3 style="font-size: 1.8rem; color: var(--primary-green); margin-bottom: 15px;">Die Trainer im Mittelpunkt</h3>
+            <p style="margin-bottom: 15px; font-size: 1.05rem; color: var(--text-dark);">21 qualifizierte Trainer und Trainerinnen stehen Woche für Woche am Platz und geben ihr sportliches Wissen an die Spieler und Spielerinnen weiter. Durch interne und externe Fortbildungen wird die bestmögliche Ausbildung unserer Trainer gewährleistet.</p>
+            <p style="margin-bottom: 15px; font-size: 1.05rem; color: var(--text-dark);">Neben den Trainer sind auch viele ehrenamtliche Mitarbeiter bei uns im Verein, die 365 Tage Ihr bestes für den Verein geben.</p>
+            <p style="font-weight: 600; color: var(--primary-green); font-size: 1.1rem; margin-top: 20px;">Hier die Gesichter zu den Standbeinen des FC Stattegg.</p>
+        </div>
+        <h3 class="section-title">Funktionäre & Betreuer</h3>
+        <div class="team-grid" id="team-grid">
+            <p style="grid-column: 1 / -1; text-align: center; color: var(--text-muted);">Lade Team-Daten...</p>
+        </div>
+    </div>
+
+    <!-- JavaScript zum Laden der CSV und Generieren der Karten -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            fetch('team.csv')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Netzwerkfehler beim Laden der CSV-Datei');
+                    }
+                    return response.text();
+                })
+                .then(data => {
+                    parseAndDisplayTeam(data);
+                })
+                .catch(error => {
+                    console.error('Fehler:', error);
+                    document.getElementById('team-grid').innerHTML = '<p style="grid-column: 1 / -1; text-align: center; color: red;">Fehler beim Laden der Kontaktdaten.</p>';
+                });
+        });
+
+        function parseAndDisplayTeam(csvText) {
+            const lines = csvText.trim().split('\n');
+            const grid = document.getElementById('team-grid');
+            grid.innerHTML = '';
+
+            for (let i = 1; i < lines.length; i++) {
+                const line = lines[i].trim();
+                if (!line) continue;
+
+                const cols = line.split(';');
+                if (cols.length < 5) continue;
+
+                const name = cols[0].trim();
+                const rolle = cols[1].trim();
+                const telefon = cols[2].trim();
+                const email = cols[3].trim();
+                const bild = cols[4].trim();
+
+                const cardHTML = `
+                    <div class="team-card">
+                        <div class="team-avatar">
+                            <img src="${bild}" alt="${name}" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" style="width: 100%; height: 100%; object-fit: cover;">
+                            <div class="team-avatar-fallback" style="display: none; width: 100%; height: 100%; align-items: center; justify-content: center; background: var(--bg-light); color: var(--text-muted);">
+                                <svg fill="currentColor" viewBox="0 0 24 24" width="80" height="80" style="opacity: 0.5;"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                            </div>
+                            <div class="team-overlay">
+                                <div class="contact-info">
+                                    <p><strong>📞 Tel:</strong> <a href="tel:${telefon}">${telefon}</a></p>
+                                    <p><strong>✉️ E-Mail:</strong> <a href="mailto:${email}">${email}</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        <h4>${name}</h4>
+                        <p>${rolle}</p>
+                    </div>
+                `;
+                grid.innerHTML += cardHTML;
+            }
+        }
+    </script>
+    <footer>
+        <p>&copy; FC Stattegg - am Wiesengrund 6 - 8046 Graz Stattegg</p>
+        <p style="font-size: 0.8rem; opacity: 0.8; margin-top: 5px;">Offizielle Vereinshomepage</p>
+    </footer>
+</body>
+</html>
