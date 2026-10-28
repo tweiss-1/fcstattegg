@@ -1,2 +1,0 @@
-# fcstattegg
-website for fcstattegg
