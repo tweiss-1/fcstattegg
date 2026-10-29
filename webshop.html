@@ -21,60 +21,52 @@
         <div class="card card--form">
             <p class="subtitle">Wähle deine gewünschten Artikel aus. Du kannst mehrere Artikel gleichzeitig in den Mengen eintragen.</p>
 
-            <!--
-                BESTELLUNG PER E-MAIL (Formspree, formspree.io):
-                1. Dort ein Formular anlegen und die Form-ID kopieren.
-                2. DEINE-FORM-ID unten durch die echte ID ersetzen.
-                   Solange der Platzhalter drinsteht, blockiert shop.js das Absenden.
-                3. Die Bestätigung an den Besteller läuft über die Auto-Responder-Funktion
-                   von Formspree (nutzt das Feld "email").
-                Die Bestellung kommt als Zusammenfassung ("Bestellung") und Gesamtsumme an.
-                Artikel und Preise stehen in data/artikel.csv.
-            -->
-            <form action="https://formspree.io/f/DEINE-FORM-ID" method="POST" id="orderForm">
-
+            <!-- Formular sendet die Daten an das PHP-Backend -->
+            <form action="sendmail.php" method="POST" id="orderForm">
+                
                 <h2 class="section-title section-title--sm">1. Deine Daten</h2>
 
-<input type="hidden" name="_subject" value="Neue Fanartikel-Bestellung">
+                <input type="hidden" name="_subject" value="Neue Fanartikel-Bestellung">
 
-<div class="row">
-    <div class="col form-group">
-        <label for="vorname">Vorname *</label>
-        <input type="text" id="vorname" name="vorname" required autocomplete="given-name">
-    </div>
-    <div class="col form-group">
-        <label for="nachname">Nachname *</label>
-        <input type="text" id="nachname" name="nachname" required autocomplete="family-name">
-    </div>
-</div>
+                <div class="row">
+                    <div class="col form-group">
+                        <label for="vorname">Vorname *</label>
+                        <input type="text" id="vorname" name="vorname" required autocomplete="given-name">
+                    </div>
+                    <div class="col form-group">
+                        <label for="nachname">Nachname *</label>
+                        <input type="text" id="nachname" name="nachname" required autocomplete="family-name">
+                    </div>
+                </div>
 
-<div class="form-group">
-    <label for="anschrift">Anschrift (Straße und Hausnummer) *</label>
-    <input type="text" id="anschrift" name="anschrift" required autocomplete="street-address">
-</div>
+                <div class="form-group">
+                    <label for="anschrift">Anschrift (Straße und Hausnummer) *</label>
+                    <input type="text" id="anschrift" name="anschrift" required autocomplete="street-address">
+                </div>
 
-<div class="row">
-    <div class="col col--narrow form-group">
-        <label for="plz">PLZ *</label>
-        <input type="text" id="plz" name="plz" required inputmode="numeric" pattern="[0-9]{4,5}"
-               title="Bitte eine 4- oder 5-stellige Postleitzahl eingeben" autocomplete="postal-code">
-    </div>
-    <div class="col form-group">
-        <label for="ort">Ort *</label>
-        <input type="text" id="ort" name="ort" required autocomplete="address-level2">
-    </div>
-</div>
+                <div class="row">
+                    <div class="col col--narrow form-group">
+                        <label for="plz">PLZ *</label>
+                        <input type="text" id="plz" name="plz" required inputmode="numeric" pattern="[0-9]{4,5}"
+                               title="Bitte eine 4- oder 5-stellige Postleitzahl eingeben" autocomplete="postal-code">
+                    </div>
+                    <div class="col form-group">
+                        <label for="ort">Ort *</label>
+                        <input type="text" id="ort" name="ort" required autocomplete="address-level2">
+                    </div>
+                </div>
 
-<div class="row">
-    <div class="col form-group">
-        <label for="email">E-Mail-Adresse (für die Bestellbestätigung) *</label>
-        <input type="email" id="email" name="email" required placeholder="deine.email@example.com" autocomplete="email">
-    </div>
-    <div class="col form-group">
-        <label for="telefon">Telefonnummer (optional)</label>
-        <input type="tel" id="telefon" name="telefon" placeholder="+43 660 ..." autocomplete="tel">
-    </div>
-</div>
+                <div class="row">
+                    <div class="col form-group">
+                        <label for="email">E-Mail-Adresse (für die Bestellbestätigung) *</label>
+                        <input type="email" id="email" name="email" required placeholder="deine.email@example.com" autocomplete="email">
+                    </div>
+                    <div class="col form-group">
+                        <label for="telefon">Telefonnummer (optional)</label>
+                        <input type="tel" id="telefon" name="telefon" placeholder="+43 660 ..." autocomplete="tel">
+                    </div>
+                </div>
+
                 <h2 class="section-title section-title--sm">2. Artikel auswählen</h2>
 
                 <table class="article-table">
@@ -91,6 +83,7 @@
                     <span id="totalPrice">€ 0,00</span>
                 </div>
 
+                <!-- Versteckte Felder für die Zusammenfassung durch shop.js -->
                 <input type="hidden" name="Bestellung" id="orderSummary">
                 <input type="hidden" name="Gesamtsumme" id="orderTotal">
 
